@@ -1,0 +1,7 @@
+{
+  "name": "picolo",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}

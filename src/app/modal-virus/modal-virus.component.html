@@ -1,0 +1,19 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>
+      <h3>Virus in Corso</h3>
+    </ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="dismissModal()">Close</ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-text *ngIf="isEmpty()">
+    <h3> Non ci sono virus in corso. </h3>
+  </ion-text>
+  <ion-list *ngIf="!isEmpty()">
+    <ion-item *ngFor="let v of virusDaMostrare"> {{v}} </ion-item>
+  </ion-list>
+</ion-content>

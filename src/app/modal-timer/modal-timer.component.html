@@ -1,0 +1,31 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>
+      <h3>Timer</h3>
+    </ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="dismissModal()">Close</ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-label>
+    <ion-input [formControl]="secs">
+      <h2>inserisci secondi:</h2>
+    </ion-input>
+  </ion-label>
+  <div class="ion-text-center">
+    <h1 *ngIf="countdownDisplay">{{countdownDisplay}}</h1>
+  </div>
+  <ion-button *ngIf="!startC" expand="block" size="large" color="primary" (click)="startCountdown()">start
+    countdown</ion-button>
+  <ion-row *ngIf="startC">
+    <ion-col>
+      <ion-button expand="full" size="large" color="primary" (click)="startCountdown()">Restart</ion-button>
+    </ion-col>
+    <ion-col>
+      <ion-button expand="full" size="large" color="primary" (click)="startCountdown()">Stop</ion-button>
+    </ion-col>
+  </ion-row>
+</ion-content>

@@ -1,0 +1,29 @@
+<ion-content fullscreen [class]='changeBackground()' (click)="newTurn()">
+  <div class="ion-text-center-frase">
+    <ion-text justify-content-center>{{frase}}</ion-text>
+  </div>
+  <div *ngIf="maledizioniConcluse.length > 0">
+    <ion-list mode="md" class="lista-virus-conclusi">
+      <ion-title class="ion-text-center"> Maledizioni Concluse</ion-title>
+      <ion-item class="ion-text-center" lines="none" color="none" *ngFor="let v of this.maledizioniConcluse">
+        {{v}}
+      </ion-item>
+    </ion-list>
+  </div>
+</ion-content>
+
+<ion-footer no-border transparent>
+  <ion-toolbar trasparent no-border>
+    <div class="ion-text-center">
+      <ion-button class="buttons" size="default" (click)="modal('players')">
+        <ion-icon name="people-outline"></ion-icon>
+      </ion-button>
+      <ion-button class="buttons" color="warning" size="default" (click)="modal('virus')">
+        <ion-icon name="medical-outline"></ion-icon>
+      </ion-button>
+      <ion-button class="buttons" size="default" (click)="timer()">
+        <ion-icon name="timer-outline"></ion-icon>
+      </ion-button>
+    </div>
+  </ion-toolbar>
+</ion-footer>

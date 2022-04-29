@@ -1,0 +1,42 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>
+      <h3>Modifica Lista Giocatori</h3>
+    </ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="dismissModal()">Close</ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-col>
+    <ion-row>
+      <form [formGroup]="formUtente">
+        <ion-input class="form-control" type="text" placeholder="Inserisci Giocatore" formControlName="giocatore">
+        </ion-input>
+        <ion-text color="danger" class="error" *ngIf="formUtente.controls.giocatore.hasError('maxlength')">
+          Nome Giocatore troppo lungo
+        </ion-text>
+      </form>
+      <ion-button expand="block" color="warning" shape="round" type="submit" (click)="addGiocatore()"
+        [disabled]="!formUtente.valid">
+        Aggiungi
+      </ion-button>
+    </ion-row>
+
+    <ion-row>
+      <ion-list>
+        <ion-list class="list-player" mode="md">
+          <ion-item class="player-label" fill="solid" size="small" lines="none" color="none" slot="left"
+            *ngFor="let i of listaGiocatori"> {{i}}
+            <ion-button slot="end" color="danger" type="submit" (click)="deleteGiocatore(i)">
+              <ion-icon name="trash-outline"></ion-icon>
+            </ion-button>
+          </ion-item>
+        </ion-list>
+      </ion-list>
+    </ion-row>
+  </ion-col>
+
+</ion-content>

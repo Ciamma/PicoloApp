@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
+import { PicolodbService } from '../services/picolodb.service';
 
 @Component({
   selector: 'app-home',
@@ -7,6 +9,11 @@ import { Component } from '@angular/core';
 })
 export class HomePage {
 
-  constructor() {}
+  constructor(private db: PicolodbService, private router: Router) {
+  }
+
+  goToPage() {
+    this.router.navigate(['config']);
+  }
 
 }

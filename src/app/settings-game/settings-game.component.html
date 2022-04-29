@@ -1,0 +1,78 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>set-up</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-card class="card-giocatori">
+    <ion-card-header>
+      <ion-card-title class="text-center">Giocatori</ion-card-title>
+    </ion-card-header>
+
+    <ion-card-content>
+      <ion-col>
+        <ion-row>
+          <form [formGroup]="formUtente">
+            <ion-input class="form-control" type="text" placeholder="Inserisci Giocatore" formControlName="giocatore">
+            </ion-input>
+            <ion-text color="danger" class="error" *ngIf="formUtente.controls.giocatore.hasError('maxlength')">
+              Nome Giocatore troppo lungo
+            </ion-text>
+          </form>
+          <ion-button expand="block" color="warning" shape="round" type="submit" (click)="addGiocatore()"
+            [disabled]="!formUtente.valid">
+            Aggiungi
+          </ion-button>
+        </ion-row>
+
+        <ion-row>
+          <div *ngIf="listaGiocatori.length > 0">
+            <ion-infinite-scroll>
+              <ion-list>
+                <ion-item class="player-label" slot="left" *ngFor="let i of listaGiocatori"> {{i}}
+                  <ion-button slot="end" color="danger" type="submit" (click)="deleteGiocatore(i)">
+                    <ion-icon name="trash-outline"></ion-icon>
+                  </ion-button>
+                </ion-item>
+              </ion-list>
+            </ion-infinite-scroll>
+          </div>
+        </ion-row>
+      </ion-col>
+    </ion-card-content>
+  </ion-card>
+
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>Difficoltà</ion-card-title>
+    </ion-card-header>
+
+    <ion-card-content>
+      <ion-range min="1" max="3" step="1" value="1" pin snaps color="primary" [disabled]="drodraghi"
+        (ionKnobMoveEnd)="aggiornaDifficolta($event)">
+        <ion-icon slot="start" size="medium" color="warning" name="beer"></ion-icon>
+        <ion-icon slot="end" size="large" color="warning" name="beer"></ion-icon>
+      </ion-range>
+      <ion-list>
+        <ion-item>
+          <ion-checkbox color="primary" slot="start" (click)="modalitaDrodraga()"></ion-checkbox>
+          <ion-label>Mod. Drodraga</ion-label>
+          <ion-label class="warning-modalita" *ngIf="this.drodraghi">liv. 2, infinito</ion-label>
+        </ion-item>
+      </ion-list>
+    </ion-card-content>
+  </ion-card>
+
+  <ion-col>
+    <div class="ion-text-center">
+      <ion-button expand="block" color="warning" shape="round" (click)="goToPage()"
+        [disabled]="listaGiocatori.length<=1">
+        Start
+      </ion-button>
+      <ion-text color="danger" *ngIf="listaGiocatori.length<=1">
+        Sono richiesti almeno due giocatori
+      </ion-text>
+    </div>
+  </ion-col>
+</ion-content>

@@ -1,0 +1,55 @@
+.lista-virus-conclusi {
+    background: transparent;
+    max-width: 80%;
+    margin-left: 10%;
+    padding-top: 8px;
+}
+
+.ion-text-center-frase {
+    font-family: Helvetica, sans-serif;
+    padding-top: 45%;
+    max-width: 80%;
+    margin-left: 10%;
+    font-size: 36px;
+    font-weight: normal;
+    padding-left: 12px;
+    padding-right: 12px;
+}
+
+.simple {
+    --background: #234912 !important;
+}
+
+.benvenuto {
+    --background: blue;
+
+    .footer {
+        --background: blue;
+    }
+}
+
+.virus {
+    --background: #fcba03 !important;
+}
+
+.danger {
+    --background: #cc0000 !important;
+}
+
+.maledizioni-concluse {
+    max-height: 35px;
+    font-size: 14px;
+    font-weight: bold;
+    justify-content: center;
+    align-items: center;
+}
+
+// per il footer trasparente
+ion-toolbar {
+    --background: transparent;
+    --ion-color-base: transparent !important;
+}
+
+ion-title {
+    padding-top: 40px;
+}

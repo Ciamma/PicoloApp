@@ -258,7 +258,7 @@ export class TheGameComponent implements OnInit {
     Object.values(this.listaVirus).forEach(l => { l.forEach(v => virusDaMostrare.push(v.virus)) });
     //console.log('lista che passo alla modale: ', virusDaMostrare);
     return virusDaMostrare;
-  }  //  todo: DA VEDERE PERCHè NON VA
+  }
 
   async modal(mod: String) {
     const modal = await this.modalCtrl.create({

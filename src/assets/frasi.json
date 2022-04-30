@@ -12,7 +12,7 @@
     "tag": "random allPlayers "
   },
   {
-    "frase": "Ognuno beve il numero di sorsi pari al numero dei suoi lusti di vita.",
+    "frase": "Ognuno beve il numero di sorsi pari al numero dei suoi {misura_tempo} di vita.",
     "tag": "random allPlayers "
   },
   {

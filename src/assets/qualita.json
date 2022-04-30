@@ -361,6 +361,7 @@
     ]
   },
   { "nome": "misura", "listQ": ["più di", "meno di"] },
+  { "nome": "misura_tempo", "listQ": ["lustri", "decenni"] },
   {
     "nome": "mestiere",
     "listQ": [
@@ -532,7 +533,10 @@
     "nome": "rima",
     "listQ": ["-inge", "-ili", "-più", "-uso", "-ita", "-oma", "-ella"]
   },
-  { "nome": "social", "listQ": ["Facebook", "Instagram", "Whatsapp"] },
+  { "nome": "social", "listQ": ["Facebook", "Instagram"] },
+  { "nome": "social_messaggi", "listQ": ["Whatsapp", "Telegram"]},
+  {"nome": "social_frase", "listQ": ["Twitter(o {social})", "Instagram"]},
+  {"nome": "social_storia", "listQ": ["Facebook", "Instagram", "TikTok(o {social})"]},
   {
     "nome": "squadra",
     "listQ": [
@@ -540,20 +544,27 @@
       "Juve",
       "Milan",
       "Inter",
+      "Napoli",
+      "Lazio",
+      "Udinese",
+      "Sampdoria",
+      "Borussia Dortmund",
+      "Bologna",
+      "Cagliari",
+      "Sassuolo",
+      "atletico Madrid",
       "Atalanta",
       "Torino",
       "Fiorentina",
-      "Lazio",
       "Barcellona",
       "Real Madrid",
       "Manchester United",
       "Thottenham",
-      "Chelsea",
-      "Napoli",
-      "Torino"
+      "Chelsea"
     ]
   },
   { "nome": "tempo", "listQ": ["prima", "dopo"] },
+  {"nome": "team_sfigati", "listQ": [""]}
   { "nome": "valore", "listQ": ["alto", "basso"] },
   {
     "nome": "verbo",
@@ -561,11 +572,15 @@
       "bere",
       "riempire",
       "andare",
+      "dire",
+      "fare",      
       "fumare",
       "mangiare",
       "sedere",
       "alzarsi",
-      "dormire"
+      "dormire",
+      "giocare",
+      "chiamare"      
     ]
   },
   {

@@ -10,11 +10,12 @@
 </ion-header>
 
 <ion-content>
-  <ion-label>
-    <ion-input [formControl]="secs">
+  <ion-item>
+    <ion-label>
       <h2>inserisci secondi:</h2>
-    </ion-input>
-  </ion-label>
+    </ion-label>
+    <ion-input [formControl]="secs"></ion-input>
+    </ion-item>
   <div class="ion-text-center">
     <h1 *ngIf="countdownDisplay">{{countdownDisplay}}</h1>
   </div>
@@ -25,7 +26,7 @@
       <ion-button expand="full" size="large" color="primary" (click)="startCountdown()">Restart</ion-button>
     </ion-col>
     <ion-col>
-      <ion-button expand="full" size="large" color="primary" (click)="startCountdown()">Stop</ion-button>
+      <ion-button expand="full" size="large" color="primary" (click)="stopCountdown()">Stop</ion-button>
     </ion-col>
   </ion-row>
 </ion-content>

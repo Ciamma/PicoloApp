@@ -1,6 +1,16 @@
 [
   { "nome": "altezza", "listQ": ["1.60m", "1.70m", "1.80m", "1.90m", "2.00m"] },
   {
+    "nome": "argomento_brindisi",
+    "listQ": [
+      "a quella cosa che manda avanti il mondo da generazioni",
+      "a quella cosa che finisce per 'h'",
+      "al patriarcato",
+      "a quella cosa che finisce per 'no'",
+      "generale alla sorella di {giocatore}"
+    ]
+  },
+  {
     "nome": "artista",
     "listQ": [
       "Queen",
@@ -47,6 +57,20 @@
     ]
   },
   {
+    "nome": "artista_anni",
+    "listQ": [
+      "anni 60'",
+      "anni 70'",
+      "anni 80'",
+      "anni 90'",
+      "anni 2000'",
+      "anni 2010'"
+    ]
+  },
+  { "nome": "azioni", "listQ": ["beve", "distribuisce"] },
+  { "nome": "azioni_plurale", "listQ": ["bevono", "distribuiscono"] },
+  { "nome": "azioni_secondaPersona", "listQ": ["Bevi", "Distribuisci"] },
+  {
     "nome": "bevanda",
     "listQ": [
       "acqua",
@@ -60,10 +84,6 @@
       "maionese",
       "vino"
     ]
-  },
-  {
-    "nome": "calzatura",
-    "listQ": ["tra il 40 e il 44", "meno di 40", "più di 44"]
   },
   {
     "nome": "brindisi",
@@ -88,24 +108,8 @@
     ]
   },
   {
-    "nome": "colore",
-    "listQ": [
-      "rosso",
-      "verde",
-      "blu",
-      "giallo",
-      "marrone",
-      "nero",
-      "bianco",
-      "viola",
-      "grigio",
-      "arancione",
-      "bordeaux",
-      "celeste",
-      "magenta",
-      "rosa",
-      "lilla"
-    ]
+    "nome": "calzatura",
+    "listQ": ["tra il 40 e il 44", "meno di 40", "più di 44"]
   },
   {
     "nome": "canzone_demoniaca",
@@ -151,25 +155,20 @@
     "listQ": [
       "'Categorie film porno'",
       "'Oggetti che si strappano'",
-      "'Film anni 90'",
-      "'Gruppi e cantanti anni 70'",
-      "'Gruppi e cantanti anni 80'",
-      "Gruppi e cantanti anni 90",
-      "Gruppi e cantanti anni 2000",
+      "'Film {artista_anni}",
+      "'Gruppi e cantanti {artista_anni}",
       "'Città che hanno meno di 5000 abitanti'",
       "'Attori che hanno vinto un Orscar'",
       "'Stati del Mondo'",
-      "'Film della Pixar'",
+      "'Film della {studios_film}'",
       "'Regioni d'Italia'",
       "'Anime e Manga'",
       "'posizioni del Kamasutra'",
       "'Giochi di carte'",
       "'Mezzi di trasporto'",
       "'Cose che si trovano nel vano portaoggetti'",
-      "'Rosse celebri e belle'",
-      "'Bionde celebri e belle'",
-      "'More celebri e belle'",
-      "'Castane celebri e belle'",
+      "'{colore_capelli_f} celebri e belle'",
+      "'{colore_capelli_m} celebri e belli'",
       "'proverbi'",
       "i componenti di un computer",
       "'Cose che hanno più di cent’anni e sono ancora utilizzate'",
@@ -180,11 +179,10 @@
       "'Nomi di pesci'",
       "'I Presidenti Americani'",
       "'Cose da fare quando si parla al telefono con qualcuno noioso'",
-      "'Generi conematografici'",
+      "'Generi cinematografici'",
       "'Generi musicali'",
       "'App siti d'inconto'",
-      "'Menù di MC Donald'",
-      "'Panini del MC'",
+      "'Panini del {fastfood}'",
       "'Nomi delle radio italiane'",
       "'Ingredienti del {drink}'",
       "'Ingredienti del {piatto}'",
@@ -196,6 +194,81 @@
       "'Parole per genitali femminili'",
       "'Condimenti per kebab'",
       "Capitali europee"
+    ]
+  },
+  {
+    "nome": "colore",
+    "listQ": [
+      "rosso",
+      "verde",
+      "blu",
+      "giallo",
+      "marrone",
+      "nero",
+      "bianco",
+      "viola",
+      "grigio",
+      "arancione",
+      "bordeaux",
+      "celeste",
+      "magenta",
+      "rosa",
+      "lilla"
+    ]
+  },
+  {
+    "nome": "colore_capelli_f",
+    "listQ": ["Rosse", "More", "Bionde", "Castane"]
+  },
+  {
+    "nome": "colore_capelli_m",
+    "listQ": ["Rossi", "Mori", "Biondi", "Castani"]
+  },
+  {
+    "nome": "comando",
+    "listQ": [
+      "fai vedere le ultime 5 foto del tuo cellulare",
+      "rivela il segno zodiacale di {giocatore1}",
+      "chiedi l’amicizia su Facebook ad una persona scelta da {giocatore1}",
+      "segui su Instagram una persona scelta da {giocatore1}",
+      "invia un messaggio su {social_messaggi} ad una persona scelta da {giocatore1}",
+      "imita {imitazione_animale} per 5 lunghi secondi"
+    ]
+  },
+  {
+    "nome": "console",
+    "listQ": [
+      "un GameBoy",
+      "una PlayStation",
+      "una Wii",
+      "un Nintendo Switch",
+      "un Xbox",
+      "una PlayStation portable",
+      "un Game Cube"
+    ]
+  },
+  {
+    "nome": "costo",
+    "listQ": [
+      "100€",
+      "150€",
+      "200€",
+      "250€",
+      "300€",
+      "350€",
+      "400€",
+      "450€",
+      "500€",
+      "550€",
+      "600€",
+      "650€",
+      "700€",
+      "750€",
+      "800€",
+      "850€",
+      "900€",
+      "950€",
+      "1000€"
     ]
   },
   {
@@ -222,6 +295,22 @@
       "x",
       "y",
       "z"
+    ]
+  },
+  {
+    "nome": "credenza",
+    "listQ": [
+      "ai fantasmi",
+      "ai vampiri",
+      "ai draghi",
+      "agli orchi",
+      "ai nani",
+      "alle divinità Buddiste",
+      "all'omeopatia",
+      "alla cristalloterapia",
+      "a Nostro Signore Gesu",
+      "agli elfi",
+      "ad Allah"
     ]
   },
   {
@@ -302,6 +391,22 @@
     ]
   },
   {
+    "nome": "fastfood",
+    "listQ": ["Mc Donald", "Burger King", "Old Wild West", "KFC"]
+  },
+  {
+    "nome": "fastfood_ristorante",
+    "listQ": [
+      "da MacDonald",
+      "da Burger King",
+      "all'Old Wild West",
+      "al KFC",
+      "dal Macellaio",
+      "da Kilo",
+      "al cinese"
+    ]
+  },
+  {
     "nome": "gioco",
     "listQ": [
       "morra cinese",
@@ -309,6 +414,68 @@
       "pari/dispari",
       "testa o croce",
       "battaglia dei pollici"
+    ]
+  },
+  {
+    "nome": "hai_mai_fatto_plurale",
+    "listQ": [
+      "riescono a toccarsi il naso con la lingua",
+      "hanno già utilizzato dei preservativi profumati",
+      "si sono mai tinti i capelli",
+      "ha flirtato solo per farsi offrire da bere",
+      "ha mai usato risvoltini"
+    ]
+  },
+  {
+    "nome": "hai_mai_fatto_singolare",
+    "listQ": [
+      "hai pianto quando è morto Mufasa",
+      "ti sei messo in malattia per i postumi di una sbronza",
+      "hai mai rubato soldi per comprare erba",
+      "hai mai fatto sesso {luogo_sesso}",
+      "hai mai avuto esperienze sadomaso",
+      "vivi ancora con i tuoi genitori",
+      "ti sei mai preso una cotta per la sorella o il fratello di un tuo amico",
+      "hai pagato il cellulare più di {costo}",
+      "hai pagato il computer più di {costo}",
+      "al polso hai un orologio da {costo}",
+      "possiedi due o più macchine",
+      "fumi una sigaretta elettronica",
+      "hai già scorreggiato mentre facevi l'amore",
+      "fai la pipì sotto la doccia",
+      "hai già portato un apparecchio per i denti",
+      "domani devi lavorare, se è una festività importante (natale, capodanno, pasqua, ...) il doppio",
+      "sei già salito/a su un cavallo",
+      "calzi {calzatura}",
+      "ti sei già masturbato sul tuo luogo di lavoro",
+      "non hai mai visto nessuno dei film {saghe_film}",
+      "ti sei masturbato negli ultimi 2 giorni",
+      "hai a casa {console}",
+      "hai a casa {console} con ancora usi",
+      "hai a casa {console} con cui hai giocato",
+      "ti sei già pentito di essere andato a letto con qualcuno",
+      "sei mai stato/a buttato/a fuori da un locale",
+      "hai tra i tuoi amci (gruppo con cui esci) un/una ex",
+      "hai spiato il profilo del partner del proprio ex sui social",
+      "ti stai sentendo con un/una ex",
+      "se sei andato/a a letto con una persona conosciuta in una App di incontri",
+      "sei maniaco/a dell'ordine",
+      "credi {credenza}"
+    ]
+  },
+  {
+    "nome": "imitazione_animale",
+    "listQ": [
+      "una lumaca",
+      "un serpente",
+      "una scimmia",
+      "una gallina che becca",
+      "un maiale",
+      "un orso",
+      "uno struzzo",
+      "una cozza",
+      "una stella marina",
+      "un ccavallo"
     ]
   },
   {
@@ -336,6 +503,22 @@
     ]
   },
   { "nome": "lettera", "listQ": ["{vocale}", "{consonante}"] },
+  {
+    "nome": "luogo_sesso",
+    "listQ": [
+      "in ufficio",
+      "in spiaggia",
+      "in chiesa",
+      "in macchina",
+      "sotto la doccia",
+      "alle terme",
+      "nell'oceano",
+      "in acqua",
+      "in autobus",
+      "sul letto di un tuo amico",
+      "sulla scrivania del capo"
+    ]
+  },
   {
     "nome": "numero",
     "listQ": [
@@ -467,20 +650,47 @@
   {
     "nome": "penitenza",
     "listQ": [
-      "dovrà ululare come un lupo",
-      "dovrà alzarsi, fare una giravolta e sedersi",
-      "dovrà ringraziare il buon Dio",
+      "ululare come un lupo",
+      "alzarsi, fare una giravolta e sedersi",
+      "ringraziare il buon Dio",
       "grugnire come un maiale",
-      "dovrà simulare la trasformazione in super sayan (urlo compreso)",
-      "dovrà fare un salto",
-      "dovrà fare una giravolta",
-      "dovrà alzarsi e sedersi",
-      "dovrà dire 'ahia'",
-      "dovrà schioccare due volte le dita",
-      "dovrà esclamare 'non si molla un cazzo'",
-      "dovrà applaudire",
+      "simulare la trasformazione in super sayan (urlo compreso)",
+      "fare un salto",
+      "fare una giravolta",
+      "alzarsi e sedersi",
+      "dire 'ahia'",
+      "schioccare due volte le dita",
+      "esclamare 'non si molla un cazzo'",
+      "applaudire",
       "alzati in piedi e muggisci",
-      "dovrà ballare il Gangnam style"
+      "ballare il Gangnam style"
+    ]
+  },
+  {
+    "nome": "persona_da_scegliere",
+    "listQ": [
+      "la persona più complicata in amore",
+      "la persona più bella",
+      "la persona più gentile",
+      "la persona più intelligente",
+      "la persona più brutta",
+      "la persona più stupida",
+      "la persona con cui sarebbe difficile vivere insieme"
+    ]
+  },
+  {
+    "nome": "persone_vendetta",
+    "listQ": [
+      "dei calvi e delle ragazze con i capelli corti",
+      "delle persone che hanno troppe più di tre allergie",
+      "dei single",
+      "dei fidanzati",
+      "degli abbronzati",
+      "degli intolleranti",
+      "dei vegetariani",
+      "dei vegani",
+      "degli astemi",
+      "dei non fumatori"
     ]
   },
   {
@@ -519,24 +729,68 @@
   {
     "nome": "punizione",
     "listQ": [
-      "non potrà piegare i gomiti",
-      "è un/una chiacchierone/a! Non puoi rimanere 3 secondi senza parlare",
-      "tiene le mani sulla testa tranne che per bere",
-      "sei il vecchio saggio! Vietato far vedere i tuoi denti fino a nuovo ordine!",
       "sei obbligato/a a rispondere ad una domanda con un'altra domanda",
-      "è bipolare! Devi dire l'esatto contrario di quello che pensi fino a nuovo ordine!",
-      "soffrirà della sindrome di Tourette fino a nuovo ordine",
       "sei un orologio vivente, devi dire ogni 5 minuti l'ora per 30 minuti"
+    ]
+  },
+  {
+    "nome": "qualita",
+    "listQ": [
+      "ha la barba",
+      "non ha la barba",
+      "ha i capelli tinti",
+      "non mangia verdure",
+      "non mangia pesce",
+      "indossa {indumento}"
     ]
   },
   {
     "nome": "rima",
     "listQ": ["-inge", "-ili", "-più", "-uso", "-ita", "-oma", "-ella"]
   },
+  {
+    "nome": "saghe_film",
+    "listQ": [
+      "del Signore degli Anelli",
+      "dello Hobbit",
+      "di Harry Potter",
+      "di star Wars",
+      "della Marvel",
+      "di Twilight",
+      "di Men in Black",
+      "di Toy Story",
+      "di Una notte al museo",
+      "di Ritorno al futuro",
+      "dello Squalo",
+      "di Narnia",
+      "della Mummia",
+      "di Indiana Jones",
+      "di Pirati dei Caraibi",
+      "del Padrino",
+      "di Kill Bill",
+      "di Mission Impossible",
+      "di Jason Bourne",
+      "di James Bond",
+      "di Rambo",
+      "di Rocky",
+      "di Fast&Furious",
+      "di Die Hard",
+      "degli X-Men",
+      "di Matrix",
+      "di Alien",
+      "di Terminator",
+      "di Terminator",
+      "di The Divergent",
+      "di Hunger Games"
+    ]
+  },
   { "nome": "social", "listQ": ["Facebook", "Instagram"] },
-  { "nome": "social_messaggi", "listQ": ["Whatsapp", "Telegram"]},
-  {"nome": "social_frase", "listQ": ["Twitter(o {social})", "Instagram"]},
-  {"nome": "social_storia", "listQ": ["Facebook", "Instagram", "TikTok(o {social})"]},
+  { "nome": "social_messaggi", "listQ": ["Whatsapp", "Telegram", "{social}"] },
+  { "nome": "social_frase", "listQ": ["Twitter(o {social})", "Instagram"] },
+  {
+    "nome": "social_storia",
+    "listQ": ["Facebook", "Instagram", "TikTok(o {social})"]
+  },
   {
     "nome": "squadra",
     "listQ": [
@@ -563,8 +817,22 @@
       "Chelsea"
     ]
   },
+  { "nome": "studios_film", "listQ": ["Pixar", "Disney", "Marvel"] },
+  {
+    "nome": "tanti_sorsi_quanti",
+    "listQ": [
+      "corrispondente al numero dei suoi anni di studio dopo il diploma!",
+      "pari al numero dei suoi {misura_tempo} di vita.",
+      "pari alla misura di reggiseno",
+      "pari alla taglia di mutande che porti",
+      "pari al numero di orecchini che stai portando",
+      "pari al numero di ex con cui non parli più",
+      "pari agli indumenti {colore} che indossa",
+      "pari al numero di zii"
+    ]
+  },
   { "nome": "tempo", "listQ": ["prima", "dopo"] },
-  {"nome": "team_sfigati", "listQ": [""]}
+  { "nome": "team_sfigati", "listQ": [""] },
   { "nome": "valore", "listQ": ["alto", "basso"] },
   {
     "nome": "verbo",
@@ -573,14 +841,14 @@
       "riempire",
       "andare",
       "dire",
-      "fare",      
+      "fare",
       "fumare",
       "mangiare",
       "sedere",
       "alzarsi",
       "dormire",
       "giocare",
-      "chiamare"      
+      "chiamare"
     ]
   },
   {
@@ -590,6 +858,10 @@
       "che inizia con l'ultima lettere della parola precedente",
       "che inizia con la lettera in mezzo della parola precedente"
     ]
+  },
+  {
+    "nome": "vincoloPersona",
+    "listQ": ["che ha la banconota di valore più {valore}", ""]
   },
   { "nome": "vocale", "listQ": ["a", "e", "i", "o", "u"] }
 ]

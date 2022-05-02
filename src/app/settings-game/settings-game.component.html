@@ -49,7 +49,12 @@
     </ion-card-header>
 
     <ion-card-content>
-      <ion-range min="1" max="3" step="1" value="1" pin snaps color="primary" [disabled]="drodraghi"
+      <ion-range *ngIf="!this.drodraghi" min="1" max="3" step="1" value="1" pin snaps color="primary" [disabled]="drodraghi"
+        (ionKnobMoveEnd)="aggiornaDifficolta($event)">
+        <ion-icon slot="start" size="medium" color="warning" name="beer"></ion-icon>
+        <ion-icon slot="end" size="large" color="warning" name="beer"></ion-icon>
+      </ion-range>
+      <ion-range *ngIf="this.drodraghi" min="1" max="3" step="1" value="2" pin snaps color="primary" [disabled]="true"
         (ionKnobMoveEnd)="aggiornaDifficolta($event)">
         <ion-icon slot="start" size="medium" color="warning" name="beer"></ion-icon>
         <ion-icon slot="end" size="large" color="warning" name="beer"></ion-icon>

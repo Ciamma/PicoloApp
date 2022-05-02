@@ -1,211 +1,165 @@
 [
   {
-    "frase": "Quelli che riescono a toccarsi il naso con la lingua distribuiscono {sorsi} sorsi",
-    "tag": "random allPlayers "
+    "frase": "Quelli che {hai_mai_fatto_plurale} {azioni_plurale} {sorsi} sorsi",
+    "tag": "random "
+  },
+  {"frase": "Coloro che {hai_mai_fatto_plurale} {azioni_plurale} {sorsi} sorsi",
+    "tag": "random  "},
+  {
+    "frase": "Ognuno trinca il numero di sorsi {tanti_sorsi_quanti}",
+    "tag": "random  "
   },
   {
-    "frase": "Quelli che hanno già utilizzato dei preservativi profumati bevono {sorsi} sorsi",
-    "tag": "random allPlayers "
+    "frase": "Ognuno beve il numero di sorsi {tanti_sorsi_quanti}",
+    "tag": "random  "
   },
   {
-    "frase": "Ognuno beve il numero di sorsi pari al numero dei suoi anni di studio dopo il diploma!",
-    "tag": "random allPlayers "
-  },
-  {
-    "frase": "Ognuno beve il numero di sorsi pari al numero dei suoi {misura_tempo} di vita.",
-    "tag": "random allPlayers "
-  },
-  {
-    "frase": "Vendetta per i calvi e le ragazze con i capelli corti, distribuite {sorsi} sorsi",
-    "tag": "random allPlayers "
+    "frase": "Vendetta da parte {persone_vendetta}, distribuite {sorsi} sorsi",
+    "tag": "random  "
   },
   {
     "frase": "Il primo/a che si toglie 2 vestiti distribuisce {sorsi} sorsi",
-    "tag": "random allPlayers "
+    "tag": "random  "
   },
   {
-    "frase": "Il giocatore che ha la banconota di valore più {valore} può distribuire {sorsi} sorsi",
-    "tag": "random allPlayers "
+    "frase": "Il giocatore {vincoloPersona} può distribuire {sorsi} sorsi",
+    "tag": "random  "
+  },
+  {
+    "frase": "Il giocatore {vincoloPersona} beve {sorsi} sorsi",
+    "tag": "random  "
   },
   {
     "frase": "{giocatore} beve {sorsi} sorsi",
-    "tag": "random 1Player "
+    "tag": "random  "
   },
   {
-    "frase": "Bevi {sorsi} sorsi se hai pianto quando è morto Mufasa",
-    "tag": "random allPlayers "
+    "frase": "{azioni_secondaPersona} {sorsi} sorsi se {hai_mai_fatto_singolare}",
+    "tag": "random  "
+  },
+  {
+    "frase": "{giocatore}, bevi {sorsi} sorsi se {hai_mai_fatto_singolare}. Se non bevi sei un bugiardo",
+    "tag": "random  "
+  },
+  {
+    "frase": "{giocatore}, {azioni_secondaPersona} {sorsi} sorsi se {hai_mai_fatto_singolare}",
+    "tag": "random  "
   },
   {
     "frase": "{giocatore}, esegui {numero} {esercizioFisico} o bevi {sorsi} sorsi",
-    "tag": "random 1Player "
+    "tag": "random  "
   },
   {
     "frase": "L'ultimo ad essere arrivato stasera beve {sorsi} sorsi",
-    "tag": "random allPlayers "
-  },
-  {
-    "frase": "Bevi {sorsi} sorsi se ti sei messo in malattia per i postumi di una sbronza",
-    "tag": "random allPlayers "
-  },
-  {
-    "frase": "Bevi {sorsi} se hai spiato il profilo del partner del proprio ex sui social",
-    "tag": "random allPlayers "
+    "tag": "random  "
   },
   {
     "frase": "{giocatore}, beato te, bevi {sorsi} sorsi",
-    "tag": "random 1Player "
+    "tag": "random  "
   },
   {
     "frase": "Sai qual'è il modo migliore per smaltire tutto questo alcol? Esercizio fisico! Fai {numero} {esercizioFisico} o fatti uno shot",
-    "tag": "random allPlayers "
+    "tag": "random  "
   },
   {
     "frase": "{giocatore} e {giocatore1} bevono {sorsi} sorsi",
-    "tag": "random 2Players "
+    "tag": "random 2Players"
   },
   {
     "frase": "{giocatore}, {giocatore1} e {giocatore2} bevono {micro_sorsi} sorsi",
-    "tag": "random 2Players "
+    "tag": "random 3Players"
   },
   {
-    "frase": "{giocatore} fai vedere le ultime 5 foto del tuo cellulare o bevi {sorsi} sorsi",
-    "tag": "random 1Player "
+    "frase": "{giocatore} {comando} o bevi {sorsi} sorsi",
+    "tag": "random "
+  },
+  {
+    "frase": "{giocatore}, {comando} e potrai distribuire {super_sorsi} sorsi",
+    "tag": "random "
   },
   {
     "frase": "Quelli che soffrono di {fobia} bevono {sorsi} sorsi. Quelli che non sanno cos'è possono andare su Wikipedia.",
-    "tag": "random allPlayers "
-  },
-  {
-    "frase": "Bevi {sorsi} sorsi se hai mai rubato soldi per comprare erba",
-    "tag": "random allPlayers "
+    "tag": "random  "
   },
   {
     "frase": "{giocatore} se hai già rubato in un negozio bevi {sorsi} sorsi, altrimenti distribuiscili",
-    "tag": "random 1Player "
+    "tag": "random  "
   },
   {
     "frase": "{giocatore}, decidi se far bere {sorsi} sorsi a {giocatore1} o a {giocatore2} (tu tieni il bicchiere)",
-    "tag": "random 2Players "
+    "tag": "random 3Players "
   },
   {
     "frase": "{giocatore}, distribuisci tanti sorsi quanti sono gli indumenti {colore} che indossi",
-    "tag": "random 1Player "
+    "tag": "random "
   },
   {
     "frase": "{giocatore}, ti sei alzato/a {tempo} le {ora_giorno}? {super_sorsi} sorsi per esserti alzato/a!, altrimenti li distribuisci",
-    "tag": "random 1Player "
-  },
-  {
-    "frase": "{giocatore}, bevi tanti sorsi quanti sono gli indumenti {colore} che indossi",
-    "tag": "random 1Player "
-  },
-  {
-    "frase": "{giocatore}, rivela il segno zodiacale di {giocatore1} o bevi {sorsi} sorsi",
-    "tag": "random 2Players "
+    "tag": "random "
   },
   {
     "frase": "{giocatore}, dai un obbligo da fare a {giocatore1}, se lui/lei accetta, potrà distribuire {super_sorsi} sorsi",
     "tag": "random 2Players "
   },
   {
-    "frase": "{giocatore}, distribuisci tanti sorsi quanti sono i tuoi zii",
-    "tag": "random 1Player "
-  },
-  {
-    "frase": "{giocatore}, bevi {sorsi} sorsi se hai mai fatto sesso in spiaggia",
-    "tag": "random 1Player "
-  },
-  {
-    "frase": "Bevi {sorsi} sorsi se hai mai avuto esperienze sadomaso",
-    "tag": "random allPlayers "
-  },
-  {
     "frase": "{sorsi} sorsi per tutti coloro che stamattina si sono alzati {tempo} le/delle {ora_giorno}",
-    "tag": "random allPlayers "
+    "tag": "random "
   },
   {
     "frase": "{sorsi} per chi è andato a dormire {tempo} le/delle {ora_notte}. Male!!",
-    "tag": "random allPlayers "
+    "tag": "random  "
   },
   {
-    "frase": "I tre giocatori più poveri bevono {sorsi} sorsi",
-    "tag": "random allPlayers "
+    "frase": "I {numero} giocatori più poveri bevono {sorsi} sorsi",
+    "tag": "random  "
   },
   {
-    "frase": "I due giocatori più ricchi bevono {sorsi} sorsi",
-    "tag": "random allPlayers "
+    "frase": "I {numero} giocatori più ricchi bevono {sorsi} sorsi",
+    "tag": "random  "
   },
   {
-    "frase": "La persona che per ultima ha mangiato al Mc fa {numero} {esercizioFisico} o beve {sorsi} sorsi",
-    "tag": "random allPlayers "
+    "frase": "La persona che per ultima ha mangiato {fastfood_ristorante} fa {numero} {esercizioFisico} o beve {sorsi} sorsi",
+    "tag": "random "
   },
   {
     "frase": "{giocatore} bevi 1 sorso per ogni giocatore più {valore} di te.",
-    "tag": "random 1Player "
+    "tag": "random  "
   },
   {
-    "frase": "Bevi {sorsi} sorsi se ivi ancora con i tuoi genitori",
-    "tag": "random allPlayers "
-  },
-  {
-    "frase": "Bevi {sorsi} sorsi se ti sei mai preso una cotta per la sorella o il fratello di un tuo amico",
-    "tag": "random allPlayers "
-  },
-  {
-    "frase": "{giocatore}, leggi l'ultimo messaggio che hai inviato su {social}, pena {sorsi} sorsi",
-    "tag": "random 1Player "
+    "frase": "{giocatore}, leggi l'ultimo messaggio che hai inviato su {social_messaggi}, pena {sorsi} sorsi",
+    "tag": "random "
   },
   {
     "frase": "Quelli e quelle che non riescono a far entrare l'intera circonferenza del bicchiere nelle loro bocche bevono {sorsi} sorsi",
-    "tag": "random allPlayers "
+    "tag": "random "
   },
   {
     "frase": "i non vegetariani bevono {sorsi} sorsi",
-    "tag": "random allPlayers "
-  },
-  {
-    "frase": "Bevi {sorsi} sorsi se hai pagato il cellulare più di 300€",
-    "tag": "random allPlayers "
-  },
-  {
-    "frase": "Bevi {sorsi} sorsi se possiedi due o più macchine",
-    "tag": "random allPlayers "
-  },
-  {
-    "frase": "Bevi {sorsi} sorsi se fumi una sigaretta elettronica",
-    "tag": "random allPlayers "
+    "tag": "random "
   },
   {
     "frase": "eleggete una persona con il carattere peggiore, beve {super_sorsi} sorsi",
-    "tag": "random allPlayers "
+    "tag": "random "
   },
   {
-    "frase": "Chiunque si sia mai tinto i capelli beve {sorsi}",
-    "tag": "random allPlayers "
+    "frase": "Chi {qualita} beve {sorsi} sorsi",
+    "tag": "random  "
   },
   {
-    "frase": "Chi ha la barba beve {sorsi} sorsi",
-    "tag": "random allPlayers "
+    "frase": "Chiunque {qualita} beve {sorsi} sorsi",
+    "tag": "random  "
   },
   {
     "frase": "tutti quelli più {età} di {giocatore} bevono {sorsi} sorsi",
-    "tag": "random 1Player "
-  },
-  {
-    "frase": "Chi non ha la barba beve {sorsi} sorsi",
-    "tag": "random allPlayers "
-  },
-  {
-    "frase": "Chi ha il bcchiere più pieno beve {sorsi} sorsi",
-    "tag": "random allPlayers "
+    "tag": "random  "
   },
   {
     "frase": "I laziali bevono {sorsi} sorsi",
-    "tag": "random allPlayers "
+    "tag": "random "
   },
   {
     "frase": "Le ragazze bevono la loro taglia di reggiseno in sorsi",
-    "tag": "random allPlayers "
+    "tag": "random "
   },
   {
     "frase": "{giocatore}, indovina la taglia di reggiseno di una ragazza tra le presenti o di una ragazza scelta da {giocatore1} se non ce ne sono. Se sbaglia, beve {sorsi} sorsi, altrimenti distribuiscili",
@@ -213,95 +167,71 @@
   },
   {
     "frase": "I tifosi di calcio bevono {sorsi} sorsi",
-    "tag": "random allPlayers "
+    "tag": "random "
   },
   {
     "frase": "La persona che ha fatto esercizi più di recente distribuisce {sorsi} sorsi",
-    "tag": "random allPlayers "
-  },
-  {
-    "frase": "Distribuisci {sorsi} sorsi se hai già scorreggiato mentre facevi l'amore",
-    "tag": "random allPlayers "
+    "tag": "random "
   },
   {
     "frase": "Mani in alto! L'ultima persona beve {sorsi} sorsi",
-    "tag": "random allPlayers "
-  },
-  {
-    "frase": "Chiunque indossa {indumento} beve {sorsi} sorsi",
-    "tag": "random allPlayers "
+    "tag": "random "
   },
   {
     "frase": "Gli amanti del/la {bevanda} bevono {sorsi} sorsi",
-    "tag": "random allPlayers "
-  },
-  {
-    "frase": "Coloro che indossano un perizoma bevono {sorsi} sorsi",
-    "tag": "random allPlayers "
-  },
-  {
-    "frase": "{giocatore}, chiedi l’amicizia su Facebook ad una persona scelta da {giocatore1} o bevi {sorsi} sorsi",
-    "tag": "random 2Players "
-  },
-  {
-    "frase": "{giocatore}, invia un messaggio su Facebook ad una persona scelta da {giocatore1} o bevi {sorsi} sorsi",
-    "tag": "random 2Players "
+    "tag": "random  "
   },
   {
     "frase": "Poveretti! Quelli che hanno dei centesimi in tasca possono far bere quelli che non ne hanno",
-    "tag": "random allPlayers "
+    "tag": "random  "
   },
   {
     "frase": "La persona più vecchia e quella più giovane si sfidano a {gioco} per {sorsi} sorsi",
-    "tag": "random allPlayers "
+    "tag": "random  "
+  },
+  {
+    "frase": "Le due persone più anziane si sfidano a {gioco} per {sorsi} sorsi",
+    "tag": "random  "
+  },
+  {
+    "frase": "Le due persone più giovani si sfidano a {gioco} per {sorsi} sorsi",
+    "tag": "random  "
   },
   {
     "frase": "Scegliere quello/a che ha l'abitudine di dormire prima degli altri nelle serate, questa persona berrà {sorsi} sorsi",
-    "tag": "random allPlayers "
+    "tag": "random  "
   },
   {
     "frase": "Quelli che hanno un pacchetto di sigarette bevono il numero di sigarette che hanno in sorsi (massimo 8)",
-    "tag": "random allPlayers "
+    "tag": "random  "
   },
   {
-    "frase": "le persone impegnate fanno bere {sorsi} sorsi ad un solo giocatore",
-    "tag": "random allPlayers "
+    "frase": "Le persone impegnate fanno bere {sorsi} sorsi ad un solo giocatore",
+    "tag": "random  "
   },
   {
     "frase": "Trinchiamo insieme!",
-    "tag": "random allPlayers "
+    "tag": "random  "
   },
   {
     "frase": "Quelli che hanno flirtato un po’ anche se erano impegnati... {super_sorsi} sorsi di punizione",
-    "tag": "random allPlayers "
+    "tag": "random  "
   },
   {
-    "frase": "Chi ha flirtatosolo per farsi offrire da bere beve {sorsi} sorsi",
-    "tag": "random allPlayers "
-  },
-  {
-    "frase": "Un brindisi generale alla sorella di {giocatore}, {brindisi}!!",
-    "tag": "random 1Player "
+    "frase": "Chi beve {sorsi} sorsi",
+    "tag": "random  "
   },
   {
     "frase": "Il più peloso beve 5 sorsi",
-    "tag": "random allPlayers "
+    "tag": "random  "
   },
   {
     "frase": "I single fanno bere {sorsi} sorsi a una sola persona",
-    "tag": "random allPlayers "
-  },
-  {
-    "frase": "{giocatore}, bevi {sorsi} sorsi se fai la pipì sotto la doccia. Se non bevi sei un bugiardo",
-    "tag": "random 1Player "
-  },
-  {
-    "frase": "{sorsi} sorsi se hai già portato un apparecchio per i denti",
-    "tag": "random allPlayers "
+    "tag": "random  "
   },
   {
     "frase": "{giocatore} sorride per 1 minuto ininterrottamente, {sorsi} sorsi ad ogni sbaglio",
-    "tag": "random 1Player "
+    "tag": "random  "
   },
   {
     "frase": "{giocatore}, se i tuoi piedi sono più piccoli di quelli di {giocatore1} bevi {sorsi} sorsi, altrimenti distribuiscili",
@@ -309,87 +239,39 @@
   },
   {
     "frase": "{giocatore} beve 2 sorsi e ne distribuisce 4",
-    "tag": "random 1Player "
+    "tag": "random  "
   },
   {
-    "frase": "{giocatore}, imita una lumaca per 5 lunghi secondi o bevi {sorsi} sorsi!",
-    "tag": "random 1Player "
-  },
-  {
-    "frase": "Basta telefoni! La prima persona a consultare il proprio smartphone riempe il bicchiere e lo finisce!!",
-    "tag": "random allPlayers "
-  },
-  {
-    "frase": "Distribuisci {sorsi} sorsi se domani devi lavorare, se è una festività importante (natale, capodanno, pasqua, ...) ne distribuisci il doppio",
-    "tag": "random allPlayers "
-  },
-  {
-    "frase": "Bevi {sorsi} sorsi se sei già salito/a su un cavallo",
-    "tag": "random allPlayers "
+    "frase": "Basta telefoni! La prima persona a consultare il proprio smartphone (il narratore può guardare solo Picolo) riempe il bicchiere e lo finisce!!",
+    "tag": "danger  "
   },
   {
     "frase": "{giocatore}, definisci un difetto per ciascuno dei giocatori e bevi un sorso per ognuno!",
-    "tag": "random 1Player "
+    "tag": "random "
   },
   {
     "frase": "Non sapete che l'acqua fa ruggine? Il primo che ne berrà dovrà pagare pegno con {sorsi} sorsi",
-    "tag": "random allPlayers "
+    "tag": "random "
   },
   {
     "frase": "{giocatore}, definisci un pregio per ciascuno dei giocatori e bevi un sorso per ognuno!",
-    "tag": "random 1Player "
-  },
-  {
-    "frase": "bevi {sorsi} sorsi se calzi {calzatura}",
-    "tag": "random allPlayers "
-  },
-  {
-    "frase": "Distribuisci {sorsi} sorsi se non hai mai visto nessuno dei film del Signore degli Anelli",
-    "tag": "random allPlayers "
+    "tag": "random "
   },
   {
     "frase": "Il primo giocatore che pubblica un selfie su Instagram distribuisce {sorsi} shottini, la foto deve rimanere almeno fino a domani",
-    "tag": "random allPlayers "
-  },
-  {
-    "frase": "bevi 1 sorso se sei andato/a a letto con una persona conosciuta in una App di incontri",
-    "tag": "random allPlayers "
-  },
-  {
-    "frase": "distribuisci {super_sorsi} sorsi se ti sei già masturbato sul tuo luogo di lavoro",
-    "tag": "random allPlayers "
-  },
-  {
-    "frase": "Bevi {sorsi} sorsi se ti sei masturbato negli ultimi 2 giorni",
-    "tag": "random allPlayers "
-  },
-  {
-    "frase": "Distribuisci {sorsi} sorsi se hai un Nintendo Switch",
-    "tag": "random allPlayers "
+    "tag": "random "
   },
   {
     "frase": "L’ultimo giocatore ad aver urinato beve {sorsi} sorsi",
-    "tag": "random allPlayers "
-  },
-  {
-    "frase": "Bevi {sorsi} sorsi se ti sei già pentito di essere andato a letto con qualcuno",
-    "tag": "random allPlayers "
+    "tag": "random "
   },
   {
     "frase": "Quelli che stanno fumando bevono 2 sorsi!",
-    "tag": "random allPlayers "
-  },
-  {
-    "frase": "Se credi nei fantasmi, bevi {sorsi} volte",
-    "tag": "random allPlayers "
-  },
-  {
-    "frase": "Bevi {sorsi} sorsi se sei mai stato/a buttato/a fuori da un locale",
-    "tag": "random allPlayers "
+    "tag": "random "
   },
   {
     "frase": "A partire da adesso e fino alla fine del gioco è vietato fumare sigarette!! Gli anarchici bevono uno shottino",
-    "tag": "random allPlayers "
+    "tag": "random "
   },
   {
     "frase": "{giocatore} beve {sorsi} sorsi mentre {giocatore1} gli/le sussurra qualcosa all'orecchio",
@@ -397,51 +279,43 @@
   },
   {
     "frase": "Le prossime {super_sorsi} persone che berranno consumeranno il doppio dei sorsi che gli spettano",
-    "tag": "random allPlayers "
+    "tag": "random "
   },
   {
     "frase": "Quelli che non volevano giocare a Picolo bevono {sorsi} sorsi. Vergogna!!!",
-    "tag": "random allPlayers "
-  },
-  {
-    "frase": "{giocatore}, bevi tanti sorsi quanti sono gli(le) ex con cui non parli più",
-    "tag": "random 1Player "
+    "tag": "random "
   },
   {
     "frase": "{giocatore}, imita un attore. Se nessuno indovina, bevi {sorsi} sorsi",
-    "tag": "random 1Player "
+    "tag": "random "
   },
   {
     "frase": "Il giocatore che ha la moneta di valore più {valore} può scegliere se darla a qualcuno, che berrà {sorsi} sorsi, oppure tenerla e bere lui {sorsi} sorsi",
-    "tag": "random allPlayers "
+    "tag": "random "
   },
   {
     "frase": "La persona che ha fatto meno strada per venire fin qui beve {sorsi} sorsi. Fortunello",
-    "tag": "random allPlayers "
+    "tag": "random "
   },
   {
-    "frase": "La persona affascinante proprietaria del telefono con il quale state giocando distribuisce {sorsi} sorsi",
-    "tag": "random allPlayers "
-  },
-  {
-    "frase": "La persona affascinante proprietaria del telefono con il quale state giocando beve {sorsi} sorsi",
-    "tag": "random allPlayers "
+    "frase": "La persona affascinante proprietaria del telefono con il quale state giocando {azioni} {sorsi} sorsi",
+    "tag": "random "
   },
   {
     "frase": "L'ultimo giocatore che si alza beve {sorsi} sorsi",
-    "tag": "random allPlayers "
+    "tag": "random "
   },
   {
-    "frase": "Scegliete la persona più bella che dovrà bere {sorsi} sorsi",
-    "tag": "random allPlayers "
+    "frase": "Scegliete {persona_da_scegliere}  che dovrà bere {sorsi} sorsi",
+    "tag": "random "
   },
   {
-    "frase": "Stabilite qual'è la persona più complicata in amore che riceverà {sorsi} sorsi",
-    "tag": "random allPlayers "
+    "frase": "Stabilite {persona_da_scegliere} che riceverà {sorsi} sorsi",
+    "tag": "random "
   },
   {
     "frase": "Tutti i giocatori che indossano qualcosa di colore {colore} bevono {sorsi} sorsi",
-    "tag": "random allPlayers "
+    "tag": "random "
   },
   {
     "frase": "{giocatore}, decidi: se aprissero un ristorante, di chi sarebbe il miglior ristorante, di {giocatore1} o di {giocatore2}? Gordon Ramsay deve distribuire {super_sorsi} sorsi",
@@ -449,99 +323,83 @@
   },
   {
     "frase": "Nominate il meno castigato della serata che berrà {super_sorsi} sorsi... Te la volevi scampare, eh!!!",
-    "tag": "random allPlayers "
+    "tag": "random "
   },
   {
     "frase": "La prima persona ad inviare un messaggio ad un membro della propria famiglia distribuisce {sorsi} sorsi",
-    "tag": "random allPlayers "
+    "tag": "random "
   },
   {
     "frase": "{giocatore}, indica il numero di persone presenti nella stanza entro 5 secondi, {super_sorsi} sorsi se sbagli",
-    "tag": "random 1Player timer"
+    "tag": "random  timer"
   },
   {
     "frase": "la persona che ha inviato recentemente un messaggio ad un membro della propria famiglia beve {sorsi} sorsi",
-    "tag": "random allPlayers "
+    "tag": "random "
   },
   {
     "frase": "Giro di tavolo, quelli che stanno guardato le stesse serie tv in questo periodo trincano e bevono {sorsi} sorsi",
-    "tag": "random allPlayers "
+    "tag": "random "
   },
   {
     "frase": "Giro di tavolo, ognuno dice l'ultimo film che ha visto e quelli che l'hanno già visto trincano bevendo 1 sorso",
-    "tag": "random allPlayers "
+    "tag": "random  "
   },
   {
     "frase": "Quelli che continuano (ancora) a bere bevande poco alcoliche (vino, birra, ...) bevono {sorsi} sorsi",
-    "tag": "random allPlayers "
-  },
-  {
-    "frase": "Bevi 5 sorsi se hai tra i tuoi amci (gruppo con cui esci) un ex o una ex",
-    "tag": "random allPlayers "
+    "tag": "random  "
   },
   {
     "frase": "Da ora fino alla fine del gioco, chiunque affermi di essere sbronzo/fatto o troppo sbronzo/fatto per giocare beve 1 sorso",
-    "tag": "random allPlayers "
+    "tag": "random  "
   },
   {
     "frase": "{giocatore} mima una scena di un film, il primo giocatore che indovina distribuisce {sorsi} sorsi",
-    "tag": "random 1Player "
+    "tag": "random  "
   },
   {
-    "frase": "Bevi 1 sorso se sei single, 2 se sei impegnato/a, 3 se la questione è più complessa",
-    "tag": "random allPlayers "
+    "frase": "{azioni_secondaPersona} 1 sorso se sei single, 2 se sei impegnato/a, 3 se la questione è più complessa",
+    "tag": "random  "
   },
   {
     "frase": "I ragazzi bevono tante volte quante sono le belle ragazze a giocare",
-    "tag": "random allPlayers "
+    "tag": "random  "
   },
   {
     "frase": "Bevi un sorso per ogni allergia che hai",
-    "tag": "random allPlayers "
+    "tag": "random  "
   },
   {
     "frase": "Le ragazze bevono tante volte quate sono i bei ragazzi a giocare",
-    "tag": "random allPlayers "
+    "tag": "random  "
   },
   {
-    "frase": "Quelli che hanno una S nel loro nome o cognome bevono {sorsi} sorsi",
-    "tag": "random allPlayers "
+    "frase": "Quelli che hanno una {lettera} nel loro nome o cognome bevono {sorsi} sorsi",
+    "tag": "random  "
   },
   {
     "frase": "La persona che aveva meno anni quando si è presa una sbronza distribuisce {sorsi} sorsi",
-    "tag": "random allPlayers "
+    "tag": "random  "
   },
   {
     "frase": "CAVALLO!!",
-    "tag": "random allPlayers "
-  },
-  {
-    "frase": "Un brindisi a quella cosa che finisce per 'h', {brindisi}!!!",
-    "tag": "random allPlayers "
-  },
-  {
-    "frase": "Un brindisi a quella cosa che finisce per 'no', {brindisi}!!!",
-    "tag": "random allPlayers "
+    "tag": "random  "
   },
   {
     "frase": "L'ultimo a fare la dab beve {sorsi} sorsi",
-    "tag": "random allPlayers "
+    "tag": "random  "
   },
   {
-    "frase": "Chi ha mai usato risvoltini beve {sorsi} sorsi",
-    "tag": "random allPlayers "
+    "frase": "Indicate {persona_da_scegliere}. Il giocatore nominato beve {sorsi} sorsi",
+    "tag": "random "
   },
   {
-    "frase": "Indicate con chi sarebbe difficile vivere insieme. Il giocatore nominato beve {sorsi} sorsi",
-    "tag": "random allPlayers "
+    "frase": "Un brindisi {argomento_brindisi}, {brindisi}!!",
+    "tag": "random "
   },
   {
-    "frase": "Bevi {sorsi} sorsi se sei maniaco/a dell'ordine",
-    "tag": "random allPlayers "
-  },
-  {
-    "frase": "Un brindisi a quella cosa che manda avanti il mondo da generazioni... {brindisi}!!",
-    "tag": "random allPlayers "
+    "frase": "Brindiamo {argomento_brindisi}, {brindisi}!!",
+    "tag": "random "
   },
   {
     "frase": "{giocatore}, scegli una sfida per {giocatore1}. Ci sono {super_sorsi} sorsi in gioco, in caso la sfida sia infattibile bevono entrambi",
@@ -549,35 +407,31 @@
   },
   {
     "frase": "{giocatore1}, bevi un numero di sorsi pari al numero di sfidedi Picolo che hai perso oggi. Nessuna sfida persa? Bevi comunque {super_sorsi} sorsi",
-    "tag": "random allPlayers "
+    "tag": "random "
   },
   {
     "frase": "{giocatore}, leggi l'ultimo messaggio che hai inviato su {social}, pena {sorsi} sorsi",
-    "tag": "random 1Player "
+    "tag": "random "
   },
   {
     "frase": "Puntate la persona che regge di meno l'alcol, costui dovrà bere {sorsi} sorsi per rafforzare lo spirito",
-    "tag": "random allPlayers "
+    "tag": "random "
   },
   {
     "frase": "La persona impegnata da più tempo distribuisce {sorsi} sorsi",
-    "tag": "random allPlayers "
+    "tag": "random  "
   },
   {
     "frase": "Shottino per chi è alto {misura} {altezza}!",
-    "tag": "random allPlayers "
-  },
-  {
-    "frase": "Shottino per chi è alto {misura} {giocatore}!",
-    "tag": "random 1Player "
+    "tag": "random  "
   },
   {
     "frase": "{giocatore} inizia dicendo una parola e la persona successiva dice una parola {vincoloParola}, chi sbaglia consumerà {sorsi} sorsi.",
-    "tag": "games 1Player "
+    "tag": "games  "
   },
   {
     "frase": "A turno un giocatore dice una parola in una lingua straniera e il giocatore alla propria sinistra deve indovinare il significato, altrimenti beve {sorsi} sorsi. {giocatore} inizia.",
-    "tag": "games 1Player "
+    "tag": "games  "
   },
   {
     "frase": "{giocatore1}, pubblica una frase stupida su Facebook che contiene le parole {parola}, {parola1}, {parola2} e {giocatore}, finiscila con #picoloapp... O finisci il tuo bicchiere",
@@ -585,15 +439,15 @@
   },
   {
     "frase": "{giocatore} deve dire 'nella mia valigia c'è...', inizia dicendo una cosa qualsiasi, ogni giocatore ripete quello che hai detto e aggiunge un elemento, il primo a sbagliare beve {sorsi} sorsi",
-    "tag": "games 1Player "
+    "tag": "games  "
   },
   {
     "frase": "Ogni giocatore dice a turno qualcosa che non ha mai fatto, quelli o quelle che l'hanno già fatto bevono, {giocatore} inizia ",
-    "tag": "games 1Player "
+    "tag": "games  "
   },
   {
     "frase": "A turno, dite qual'è il prezzo delle vostre scarpe. Le paia che sono costate di più di 45€ bevono {sorsi} sorsi",
-    "tag": "games allPlayers "
+    "tag": "games  "
   },
   {
     "frase": "{giocatore} e {giocatore1} si sfidano a {gioco}! Chi perde beve {sorsi} sorsi. Se si rifiutano bevono entrambi.",
@@ -601,7 +455,7 @@
   },
   {
     "frase": "Gioco delo stronzo! A turno, scegliete qualcuno che berrà {sorsi} sorsi, {giocatore} inizia",
-    "tag": "games 1Player "
+    "tag": "games  "
   },
   {
     "frase": "{giocatore} vs {giocatore1}! Guardatevi dritto negli occhi, a turno raccontatevi delle freddure. Chi ride o chi rimane a corto di idee beve {sorsi} sorsi",
@@ -609,55 +463,55 @@
   },
   {
     "frase": "Meglio {dubbio}? Votate tutti contemporaneamente, chi è in minoranza beve {sorsi} sorsi!",
-    "tag": "games allPlayers "
+    "tag": "games  "
   },
   {
     "frase": "A turno dite il vostro nome al contrario, chi sbaglia beve {sorsi} sorsi. {giocatore} inizia",
-    "tag": "games 1Player "
+    "tag": "games  "
   },
   {
     "frase": "A favore o contro il costume intero? Votate tutti contemporaneamente, chi è in minoranza beve {sorsi} sorsi!",
-    "tag": "games allPlayers "
+    "tag": "games  "
   },
   {
     "frase": "A favore o contro il gel/cera nei capelli? Votate tutti contemporaneamente, chi è in minoranza beve {sorsi} sorsi",
-    "tag": "games allPlayers "
+    "tag": "games  "
   },
   {
     "frase": "Preferireste {dubbio}? Votate tutti contemporaneamente, chi è in minoranza beve {sorsi} sorsi! ",
-    "tag": "games allPlayers "
+    "tag": "games  "
   },
   {
     "frase": "Tutti scelgono tra {dilemma}, chi è in minoranza beve {sorsi} sorsi",
-    "tag": "games allPlayers "
+    "tag": "games  "
   },
   {
     "frase": "Nuovo tema e {sorsi} sorsi in gioco:'i personaggi di {cartoni_serie_tv}', {giocatore} inizia",
-    "tag": "games allPlayers timer"
+    "tag": "games  timer"
   },
   {
     "frase": "Nuovo argomento e {sorsi} sorsi in palio: {categoria}. {giocatore} inizia ",
-    "tag": "games allPlayers timer"
+    "tag": "games  timer"
   },
   {
     "frase": "{categoria}, il gicatore che ne ripete una o che non ne trova più beve {sorsi} sorsi. {giocatore} inizia",
-    "tag": "games allPlayers timer"
+    "tag": "games  timer"
   },
   {
     "frase": "'I giocatori della {squadra}', la persona che ne ripete uno o che non ne trova più beve {sorsi} sorsi. {giocatore} inizia",
-    "tag": "games allPlayers timer"
+    "tag": "games  timer"
   },
   {
     "frase": "'Canzoni di/dei {artista}', la persona che ne ripete uno o che non ne trova più beve {sorsi} sorsi. {giocatore} inizia",
-    "tag": "games allPlayers timer"
+    "tag": "games  timer"
   },
   {
     "frase": "Gioco dei temi e {sorsi} sorsi in gioco: {categoria}, {giocatore} inizia",
-    "tag": "games allPlayers timer"
+    "tag": "games  timer"
   },
   {
     "frase": "Rima con {rima}, il giocatore che ne ripete uno o che non ne trova più beve {sorsi} sorsi, {giocatore} inizia",
-    "tag": "games allPlayers timer"
+    "tag": "games  timer"
   },
   {
     "frase": "Shottino per {giocatore}!",
@@ -681,7 +535,7 @@
   },
   {
     "frase": "{sorsi} sorsi per tutti!!",
-    "tag": "random allPlayers"
+    "tag": "random "
   },
   {
     "frase": "{giocatore} pubblica una frase/storia su {social} che contiene le parole {parola}, {parola1}, {parola2}, {giocatore1} e finiscila con #picoloapp... o finisci il tuo bicchiere",
@@ -761,10 +615,10 @@
   },
   {
     "frase": "La partita si fa interessante... {sorsi} sorsi per tutti",
-    "tag": "random allPlayers"
+    "tag": "random "
   },
   {
     "frase": "Non sentite freddo? {super_sorsi} sorsi per riscaldarvi un po",
-    "tag": "random allPlayers"
+    "tag": "random "
   }
 ]

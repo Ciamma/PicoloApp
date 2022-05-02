@@ -140,27 +140,43 @@
         "virus_f": "{giocatore}, puoi smettere di {punizione}"
     },
     {
-        "virus": "{giocatore} {punizione}, pena {micro_sorsi} sorso",
-        "virus_f": "{giocatore}, puoi smettere ufficialmente di {punizione}"
+        "virus":"{giocatore} {punizione}. Bevi ogni volta che te ne dimentichi",
+        "virus_f":""
     },
     {
-        "virus": "{giocatore} {punizione} (pena {sorsi} sorsi)",
-        "virus_f": "{giocatore}, dato che i stai facendo pena, puoi smettere ufficialmente di {punizione}"
+        "virus":"{giocatore} soffrirà della sindrome di Tourette fino a nuovo ordine",
+        "virus_f":"Hanno trovato una cura per la Tourette. {giocatore} è stato curato"
     },
     {
-        "virus": "{giocatore} {punizione} (2 sorsi ogni volta che sbagli)",
-        "virus_f": "{giocatore}, sei ridotto talmente male che puoi smettere di {punizione}"
+        "virus":"{giocatore} è bipolare! Devi dire l'esatto contrario di quello che pensi fino a nuovo ordine!",
+        "virus_f":"{giocatore} non è più bipolare"
     },
     {
-        "virus": "Ogni volta che {giocatore} deve bere {penitenza}, pena {micro_sorsi} sorsi.",
+        "virus":"{giocatore} sei il vecchio saggio! Vietato far vedere i tuoi denti fino a nuovo ordine!",
+        "virus_f":"Una pozione permette a {giocatore} di tornare giovane"
+    },
+    {
+        "virus": "{giocatore} non potrà piegare i gomiti, pena {micro_sorsi} sorso",
+        "virus_f": "{giocatore}, puoi ricominciare a piegare i gomiti"
+    },
+    {
+        "virus": "{giocatore} tiene le mani sulla testa tranne che per bere (pena {sorsi} sorsi ogni volta non lo fa)",
+        "virus_f": "{giocatore}, dato che i stai facendo pena, puoi abbassare le mani"
+    },
+    {
+        "virus": "{giocatore} è un/una chiacchierone/a! Non puoi rimanere 3 secondi senza parlare ({micro_sorsi} sorsi ogni volta che sbagli)",
+        "virus_f": "{giocatore}, sei ridotto talmente male che puoi smettere di parlare di continuo"
+    },
+    {
+        "virus": "Ogni volta che {giocatore} deve bere dovrà {penitenza}, pena {micro_sorsi} sorsi.",
         "virus_f": "{giocatore} non dovrai più {penitenza} ogni volta che bevi"
     },
     {
-        "virus": "Ogni volta che {giocatore} deve bere {penitenza}, {micro_sorsi} sorsi in caso non venga eseguito.",
+        "virus": "Ogni volta che {giocatore} deve bere dovrà {penitenza}, {micro_sorsi} sorsi in caso non venga eseguito.",
         "virus_f": "{giocatore} non dovrai più {penitenza} ogni volta che bevi"
     },
     {
-        "virus": "Ogni volta che {giocatore} beve {penitenza}, pena {micro_sorsi} sorsi",
+        "virus": "Ogni volta che {giocatore} beve dovrà {penitenza}, pena {micro_sorsi} sorsi",
         "virus_f": "{giocatore} non dovrai più {penitenza} ogni volta che bevi"
     }
 ]

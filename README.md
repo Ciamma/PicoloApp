@@ -10,5 +10,5 @@ My version, instead, randomly creates a sentence and chooses both the players wh
 according to the chosen difficulty. With this method, you can easily increase the total number of phrases and hardly repeat phrases over the course 
 of several games, allowing players to not always encounter the same rules. In addition there are viruses and phrases added that allow further fun. 
 
-The graphics are not great, I have only 2 months of frontend behind me and I'm still not very familiar with ui/ux, all ie creations so far have been 
-developed to be used only from the terminal.
+Graphic is simple, I have only 2 months of frontend behind me and I'm still not very familiar with ui/ux, all my creations so far have been 
+developed to be used only from terminal.

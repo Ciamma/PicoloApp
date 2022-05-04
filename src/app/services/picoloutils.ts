@@ -1,9 +1,15 @@
+import { Frase } from "./picolomodels";
+
 export function randomizer(length: number): number {
     return Math.floor(Math.random() * length);
 }
 
 export function randomizerBetween(min: number, max: number): number {
     return Math.floor(Math.random() * (max - min + 1)) + min;
+}
+
+export function frasiFiltrateNumeroGiocatori(lista: Set<Frase>) {
+    return Array.from(lista).filter(p => !p.tag.includes("3Players"));
 }
 
 export function isEmpty(structure: any[]): boolean {
@@ -16,7 +22,7 @@ export function intersecate(listaPartenza: Set<any>, listaDoppioni: Set<any>): S
 
 export function checkSets(listaPartenza: Set<any>, listaDoppioni: Set<any>) {
     if (listaPartenza.size === listaDoppioni.size)
-        return listaPartenza.clear();
+        listaDoppioni.clear();
 }
 
 export function randomTurno(turnoCorrente: number, turni: number): number {

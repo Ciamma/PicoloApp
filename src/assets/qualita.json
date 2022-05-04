@@ -1,4 +1,5 @@
 [
+  {"nome":"aggettivo_da_definire", "listQ":["un pregio", "un difetto"]},
   { "nome": "altezza", "listQ": ["1.60m", "1.70m", "1.80m", "1.90m", "2.00m"] },
   {
     "nome": "argomento_brindisi",
@@ -13,58 +14,58 @@
   {
     "nome": "artista",
     "listQ": [
-      "Queen",
-      "Vasco Rossi",
-      "Ligabue",
-      "Nek",
-      "Pino Daniele",
-      "Giorgia",
-      "Laura Pausini",
-      "Pink Floyd",
-      "Avicii",
-      "Coez",
-      "Ultimo",
-      "Tiziano Ferro",
-      "Cesare Cremonini",
-      "Gazzelle",
-      "Caparezza",
-      "Salmo",
-      "883",
-      "The Black Eyed Peas",
-      "Maroon 5",
-      "Ed Sheeran",
-      "Muse",
-      "Rolling Stones",
-      "Beatles",
-      "Oasis",
-      "Bruno Mars",
-      "Linkin Park",
-      "AC/DC",
-      "Articolo 31",
-      "J-Ax",
-      "Coldplay",
-      "The Police",
-      "Michael Jackson",
-      "Michael Bublè",
-      "Jovanotti",
-      "Metallica",
-      "Greend day",
-      "Fabri Fibra",
-      "U2",
-      "Led Zeppelin",
-      "Red HotChili Peppers",
-      "Gorillaz"
+      "dei Queen",
+      "di Vasco Rossi",
+      "di Ligabue",
+      "di Nek",
+      "di Pino Daniele",
+      "di Giorgia",
+      "di Laura Pausini",
+      "dei Pink Floyd",
+      "di Avicii",
+      "di Coez",
+      "di Ultimo",
+      "di Tiziano Ferro",
+      "di Cesare Cremonini",
+      "di Gazzelle",
+      "di Caparezza",
+      "di Salmo",
+      "degli 883",
+      "dei The Black Eyed Peas",
+      "dei Maroon 5",
+      "di Ed Sheeran",
+      "dei Muse",
+      "dei Rolling Stones",
+      "dei Beatles",
+      "degli Oasis",
+      "di Bruno Mars",
+      "dei Linkin Park",
+      "degli AC/DC",
+      "degli Articolo 31",
+      "di J-Ax",
+      "dei Coldplay",
+      "dei The Police",
+      "di Michael Jackson",
+      "di Michael Bublè",
+      "di Jovanotti",
+      "dei Metallica",
+      "dei Greend day",
+      "di Fabri Fibra",
+      "degli U2",
+      "dei Led Zeppelin",
+      "dei Red HotChili Peppers",
+      "dei Gorillaz"
     ]
   },
   {
     "nome": "artista_anni",
     "listQ": [
-      "anni 60'",
-      "anni 70'",
-      "anni 80'",
-      "anni 90'",
-      "anni 2000'",
-      "anni 2010'"
+      "anni 60",
+      "anni 70",
+      "anni 80",
+      "anni 90",
+      "anni 2000",
+      "anni 2010"
     ]
   },
   { "nome": "azioni", "listQ": ["beve", "distribuisce"] },
@@ -153,10 +154,13 @@
   {
     "nome": "categoria",
     "listQ": [
+      "'I giocatori della {squadra}'",
+      "'i personaggi di {cartoni_serie_tv}'",
       "'Categorie film porno'",
       "'Oggetti che si strappano'",
       "'Film {artista_anni}",
-      "'Gruppi e cantanti {artista_anni}",
+      "'Gruppi e cantanti {arDei tista_anni}'",
+      "'Canzoni {artista}'",
       "'Città che hanno meno di 5000 abitanti'",
       "'Attori che hanno vinto un Orscar'",
       "'Stati del Mondo'",
@@ -170,11 +174,11 @@
       "'{colore_capelli_f} celebri e belle'",
       "'{colore_capelli_m} celebri e belli'",
       "'proverbi'",
-      "i componenti di un computer",
+      "'I componenti di un computer'",
       "'Cose che hanno più di cent’anni e sono ancora utilizzate'",
       "'I giochi alcolici'",
-      "'sinonimi di molti'",
-      "'sinonimi di bella'",
+      "'Sinonimi di molti'",
+      "'Sinonimi di bella'",
       "'Parole più lunghe di 13 lettere'",
       "'Nomi di pesci'",
       "'I Presidenti Americani'",
@@ -419,11 +423,12 @@
   {
     "nome": "hai_mai_fatto_plurale",
     "listQ": [
-      "riescono a toccarsi il naso con la lingua",
-      "hanno già utilizzato dei preservativi profumati",
-      "si sono mai tinti i capelli",
-      "ha flirtato solo per farsi offrire da bere",
-      "ha mai usato risvoltini"
+      "riescono a toccarsi il naso con la lingua", 
+      "hanno già utilizzato dei preservativi {tipo_preservativo}",
+      "si sono mai tinti i capelli", 
+      "hanno flirtato solo per farsi offrire da bere", 
+      "hanno mai usato risvoltini",
+      "indossano qualcosa di colore {colore}" 
     ]
   },
   {
@@ -675,7 +680,8 @@
       "la persona più intelligente",
       "la persona più brutta",
       "la persona più stupida",
-      "la persona con cui sarebbe difficile vivere insieme"
+      "la persona con cui sarebbe difficile vivere insieme",
+      "chi ha l'abitudine di dormire prima degli altri nelle serate,"
     ]
   },
   {
@@ -819,10 +825,11 @@
   },
   { "nome": "studios_film", "listQ": ["Pixar", "Disney", "Marvel"] },
   {
-    "nome": "tanti_sorsi_quanti",
+    "nome": "tanti_quanti",
     "listQ": [
       "corrispondente al numero dei suoi anni di studio dopo il diploma!",
       "pari al numero dei suoi {misura_tempo} di vita.",
+      "pari al numero di sfide di Picolo che hai perso oggi. Nessuna sfida persa? Bevi comunque {super_sorsi} sorsi",
       "pari alla misura di reggiseno",
       "pari alla taglia di mutande che porti",
       "pari al numero di orecchini che stai portando",
@@ -831,8 +838,8 @@
       "pari al numero di zii"
     ]
   },
-  { "nome": "tempo", "listQ": ["prima", "dopo"] },
-  { "nome": "team_sfigati", "listQ": [""] },
+  { "nome": "tempo", "listQ": ["prima delle", "dopo le"] },
+  {"nome":"tipo_preservativo", "listQ":["profumati","colorati", "fluorescenti", "ritardanti", "stimolanti"]},
   { "nome": "valore", "listQ": ["alto", "basso"] },
   {
     "nome": "verbo",
@@ -861,7 +868,7 @@
   },
   {
     "nome": "vincoloPersona",
-    "listQ": ["che ha la banconota di valore più {valore}", ""]
+    "listQ": ["che ha la banconota di valore più {valore}"]
   },
   { "nome": "vocale", "listQ": ["a", "e", "i", "o", "u"] }
 ]

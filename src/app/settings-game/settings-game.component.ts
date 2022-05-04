@@ -22,7 +22,7 @@ export class SettingsGameComponent implements OnInit {
     this.formUtente = this.form.group({
       'giocatore': ["", [Validators.required, Validators.maxLength(15)]],
     });
-    this.listaGiocatori = ['Gigi', 'Liuk'];
+    this.listaGiocatori = ['Gigi', 'Liuk', "Ricky"];
     this.difficolta = 1;
     this.turni = 10;
     this.drodraghi = false;

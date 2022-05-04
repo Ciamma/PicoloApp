@@ -19,14 +19,14 @@
   <div class="ion-text-center">
     <h1 *ngIf="countdownDisplay">{{countdownDisplay}}</h1>
   </div>
-  <ion-button *ngIf="!startC" expand="block" size="large" color="primary" (click)="startCountdown()">start
+  <ion-button *ngIf="start ===false" expand="block" size="large" color="primary" (click)="countDown()">start
     countdown</ion-button>
-  <ion-row *ngIf="startC">
+  <ion-row *ngIf="start === true">
     <ion-col>
-      <ion-button expand="full" size="large" color="primary" (click)="startCountdown()">Restart</ion-button>
+      <ion-button expand="full" size="large" color="primary" (click)="restart=true">Restart</ion-button>
     </ion-col>
     <ion-col>
-      <ion-button expand="full" size="large" color="primary" (click)="stopCountdown()">Stop</ion-button>
+      <ion-button expand="full" size="large" color="primary" (click)="stop=true">Stop</ion-button>
     </ion-col>
   </ion-row>
 </ion-content>

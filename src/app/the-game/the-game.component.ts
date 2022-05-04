@@ -6,7 +6,7 @@ import { ModalTimerComponent } from '../modal-timer/modal-timer.component';
 import { ModalVirusComponent } from '../modal-virus/modal-virus.component';
 import { PicolodbService } from '../services/picolodb.service';
 import { Frase, Quality, Sips, Virus } from '../services/picolomodels';
-import { checkSets, intersecate, randomizer, randomTurno } from '../services/picoloutils';
+import { checkSets, frasiFiltrateNumeroGiocatori, intersecate, randomizer, randomTurno } from '../services/picoloutils';
 
 @Component({
   selector: 'app-the-game',
@@ -31,6 +31,11 @@ export class TheGameComponent implements OnInit {
   turnoCorrente: number; //il turno corrente
   difficolta: number; // difficoltà gioco
   sips: Set<Sips>; // lista dei sorsi
+  TEST: number;  /* indica il livello di cose da printare: 
+                        0-nulla
+                        1- minimo(turno,frase)
+                        2- medio(turno, frase, sostituzioni, virus conclusi, virus in corso)
+                        3- massimo(turno, frase, virus conclusi, virus in corso, parole sostituite, liste e insiemi) */
 
 
   constructor(private navCtrl: NavController, private modalCtrl: ModalController, private toast: ToastController,
@@ -47,21 +52,25 @@ export class TheGameComponent implements OnInit {
     this.qualita = [];
     this.qualitaUsate = new Map<String, Set<String>>();
     this.sips = new Set<Sips>();
-  }
+    this.TEST = 0;
 
-  ngOnInit() {
     this.frasi_tot = this.db.getFrasi();
     this.virus_tot = this.db.getVirus();
     this.qualita = this.db.getQualita();
     this.setSips(this.difficolta);
-    this.maledizioniConcluse = []; // ['Gigi non è più il re dei pollici', 'Cabbo non soffre più della sindrome di Tourette'];
+
+  }
+
+  ngOnInit() {
+    if (this.listaGiocatori.size < 3)
+      frasiFiltrateNumeroGiocatori(this.frasi_tot);
+    this.TEST > 2 ? console.log("Da JSON - lista frasi: ", this.frasi_tot, ", lista virus: ", this.listaVirus, ", lista qualità: ", this.qualita) : null;
+    this.maledizioniConcluse = [];
     let virusPossibili = Math.round(this.turni / 100) * 20;
     for (let i = 0; i <= virusPossibili; i++) {
       this.virusTurni.add(randomizer(this.turni));
     }
-    console.log(Array.from(this.virusTurni).sort((n1, n2) => n1 - n2));
-    this.listaVirus[4] = new Set<Virus>();
-    this.listaVirus[4].add(new Virus("sono un virus", "sono un virus concluso"));
+    this.TEST > 2 ? console.log("Turni in cui compariranno i virus: ", Array.from(this.virusTurni).sort((n1, n2) => n1 - n2)) : null;
     this.turnoCorrente = 1;
     this.primoTurno();
   }
@@ -79,7 +88,6 @@ export class TheGameComponent implements OnInit {
   setSips(livello: number) {
     if (livello == 1) {
       this.sips.add(new Sips("micro_sorsi", [1, 2]));
-      // console.log(this.sips);
       this.sips.add(new Sips("sorsi", [2, 3, 4]));
       this.sips.add(new Sips("super_sorsi", [3, 4]));
     } else if (livello == 2) {
@@ -91,6 +99,7 @@ export class TheGameComponent implements OnInit {
       this.sips.add(new Sips("sorsi", [3, 4]));
       this.sips.add(new Sips("super_sorsi", [5, 6, 7]));
     }
+    this.TEST > 2 ? console.log("lista sorsi: ", this.sips) : null;
   }
 
   findWord(tipo: string, doppioni?: Set<String>): string {
@@ -101,13 +110,15 @@ export class TheGameComponent implements OnInit {
     else {  // devo sostituire una qualità
       let qualitaPescabii = [];
       let qualita = this.qualita.filter(q => q.nome === tipo);
-      //console.log("qualita: ", qualita);
+      this.TEST > 1 ? console.log("lista qualità da sostituire: ", qualita) : null;
       if (qualita.length === 0)
         return "";
       if (this.qualitaUsate[tipo].size > 0) { // devo filtrare la lista con i doppioni già usati
-        qualitaPescabii = qualita[0].listQ.filter(q => !this.qualitaUsate.get(tipo).has(q));
+        qualitaPescabii = qualita[0].listQ.filter(q => !this.qualitaUsate[tipo].has(q));
+        this.TEST > 2 ? console.log("lista qualità da sostituire dopo filtraggio: ", qualitaPescabii) : null;
       } else {
         qualitaPescabii = qualita[0].listQ;
+        this.TEST > 2 ? console.log("prima volta che scelgo un elemento di questa qualità") : null;
       }
       return qualitaPescabii[randomizer(qualitaPescabii.length)];
     }
@@ -120,19 +131,21 @@ export class TheGameComponent implements OnInit {
   }
 
   substitute(frase: String, frase_f?: String) {
-    console.log(frase);
+    this.TEST > 0 ? console.log("frase senza sostituzioni: ", frase) : null;
     let giocatoriScelti = new Set<String>();
     const regex = /\{(.*?)\}/g;
-    const cont = new Set(frase.match(regex));
+    let cont = new Set(frase.match(regex));
     let change = "";
     while (cont.size > 0) {
       cont.forEach(sub => {
         cont.delete(sub);
         let subb = sub.replace("{", "").replace("}", "").trim();
-        //console.log("da cambiare: ", subb);
+        if (subb.includes("parola"))
+          subb = "parola";
+        this.TEST > 1 ? console.log("qualità da cambiare: ", subb) : null;
         if (sub.includes("giocatore")) {
           change = this.findWord(subb, giocatoriScelti);
-          // console.log("giocatore scelto: ", change);
+          this.TEST > 1 ? console.log("giocatore scelto: ", change) : null;
           if (giocatoriScelti.size == this.listaGiocatori.size)
             giocatoriScelti.clear();
           giocatoriScelti.add(change);
@@ -142,26 +155,31 @@ export class TheGameComponent implements OnInit {
         }
         else if (sub.includes("sorsi")) {
           change = this.configureSips(subb);
-          // console.log("sorsi scelto: ", change);
+          this.TEST > 1 ? console.log("sorsi scelto: ", change) : null;
           frase = frase.replace(sub, String(change));
           if (frase_f != undefined && frase_f.includes(sub))
             frase_f = frase_f.replace(sub, change);
         } else {
-          //let qualitaCercata = this.qualita.filter(q => q.nome === subb)[0].listQ;
-          if (this.qualitaUsate.get(subb) == undefined)
+          if (subb in this.qualitaUsate === false) {
+            this.TEST > 2 ? console.log("qualità mai usata") : null;
             this.qualitaUsate[subb] = new Set<String>();
+          }
           change = this.findWord(subb);
-          //console.log("qualita scelta: ", change);
+          this.TEST > 1 ? console.log("qualita scelta: ", change) : null;
+          this.qualitaUsate[subb].add(change);
+          if (this.qualitaUsate[subb].size === this.qualita.filter(q => q.nome === subb)[0].listQ.length)
+            this.qualitaUsate[subb].clear();
+          this.TEST > 2 ? console.log("qualità totali: ", this.qualita, ", lista qualità cercata: ", this.qualitaUsate[subb]) : null;
           frase = frase.replace(sub, change);
           if (frase_f != undefined && frase_f.includes(sub))
             frase_f = frase_f.replace(sub, change);
-          //console.log("qualità totali: ", this.qualita, ", qualità cercata: ", qualitaCercata);
-
         }
       });
+      cont = new Set(frase.match(regex));
     }
     if (frase_f != undefined)
       this.setVirus(frase, frase_f);
+    this.TEST > 0 ? console.log("frase printata: ", frase) : null;
     return frase;
   }
 
@@ -171,43 +189,43 @@ export class TheGameComponent implements OnInit {
       this.listaVirus[turniVirus] = new Set<Virus>();
     let v: Virus = new Virus(frase, frase_f);
     this.listaVirus[turniVirus].add(v);
-    console.log(this.listaVirus);
+    this.TEST > 2 ? console.log("lista virus aggiornata: ", this.listaVirus) : null;
   }
 
   virusConclusi() {
     if (this.turnoCorrente in this.listaVirus) {
       let listaVirus = this.listaVirus[this.turnoCorrente];
-      //console.log("listavirus: ", listaVirus);
+      this.TEST > 2 ? console.log("listavirus: ", listaVirus) : null;
       listaVirus.forEach(v => {
         this.maledizioniConcluse.push(v.virus_f);
         this.listaVirus[this.turnoCorrente].delete(v);
       });
     }
+    this.TEST > 0 ? console.log("virus conclusi in questo turno: ", this.maledizioniConcluse) : null;
   }
 
   chooseFrase(virus?: boolean) {
-    // console.log("listaVirus: ", this.listaVirus);
+    this.TEST > 2 ? console.log("listaVirus: ", this.listaVirus) : null;
     let lista_virus = intersecate(this.virus_tot, this.virusFatti);
     let lista_frasi = intersecate(this.frasi_tot, this.frasiFatte);
-    //console.log("virus_tot: ", this.virus_tot, ", virusFatti: ", this.virusFatti, ", lista_virus: ", lista_virus);
-    //console.log("frasi_tot: ", this.frasi_tot, ", frasiFatte: ", this.frasiFatte, ", lista_frasi: ", lista_frasi);
+    this.TEST > 2 ? console.log("virus_tot: ", this.virus_tot, ", virusFatti: ", this.virusFatti, ", lista_virus: ", lista_virus) : null;
+    this.TEST > 2 ? console.log("frasi_tot: ", this.frasi_tot, ", frasiFatte: ", this.frasiFatte, ", lista_frasi: ", lista_frasi) : null;
     if (virus && this.viewAllVirus().length < 4) {
       let casual = randomizer(lista_virus.size);
       this.virusFatti.add(Array.from(lista_virus)[casual]);
-      //console.log("virus fatti: ", this.virusFatti);
+      this.TEST > 2 ? console.log("lista virus fatti: ", this.virusFatti) : null;
       this.frase = this.substitute(Array.from(lista_virus)[casual].virus, Array.from(lista_virus)[casual].virus_f);
       this.tipoFrase = "virus";
     } else {
       let casual = randomizer(lista_frasi.size);
       this.frasiFatte.add(Array.from(lista_frasi)[casual]);
-      //console.log("frasi fatte: ", this.frasiFatte);
+      this.TEST > 2 ? console.log("lista frasi fatte: ", this.frasiFatte) : null;
       this.frase = this.substitute(Array.from(lista_frasi)[casual].frase);
       this.tipoFrase = Array.from(lista_frasi)[casual].tag;
     }
     checkSets(this.frasi_tot, this.frasiFatte);
     checkSets(this.virus_tot, this.virusFatti);
     this.virusConclusi();
-    //console.log("virus conclusi in questo turno: ", this.maledizioniConcluse);
     this.changeBackground();
   }
 
@@ -228,8 +246,8 @@ export class TheGameComponent implements OnInit {
   }
 
   newTurn() {
-    console.log("--------------------------------------------------");
-    console.log('turno corrente: ' + this.turnoCorrente)
+    this.TEST > 0 ? console.log("--------------------------------------------------") : null;
+    this.TEST > 0 ? console.log('turno corrente: ' + this.turnoCorrente) : null;
     this.maledizioniConcluse = [];
     if (this.turnoCorrente < this.turni) {
       if (this.virusTurni.has(this.turnoCorrente)) {
@@ -239,10 +257,12 @@ export class TheGameComponent implements OnInit {
       }
       this.turnoCorrente += 1;
     } else if (this.turnoCorrente === this.turni) {
+      this.TEST > 0 ? console.log("fine partita") : null;
       this.frase = "That's All Falks. Alla Prossima";
       this.tipoFrase = "benvenuto";
       this.turnoCorrente += 1;
     } else {
+      this.TEST > 2 ? console.log("torno alle impostazioni") : null;
       let navigationExtras: NavigationExtras = {
         queryParams: {
           giocatori: this.listaGiocatori,
@@ -256,7 +276,7 @@ export class TheGameComponent implements OnInit {
   viewAllVirus(): String[] {
     let virusDaMostrare = [];
     Object.values(this.listaVirus).forEach(l => { l.forEach(v => virusDaMostrare.push(v.virus)) });
-    //console.log('lista che passo alla modale: ', virusDaMostrare);
+    this.TEST > 2 ? console.log('lista che passo alla modale-virus: ', virusDaMostrare) : null;
     return virusDaMostrare;
   }
 
@@ -285,8 +305,8 @@ export class TheGameComponent implements OnInit {
     const modal = await this.modalCtrl.create({
       component: ModalTimerComponent,
       componentProps: {},
-      breakpoints: [0, 0.5, 0.8],
-      initialBreakpoint: 0.5
+      breakpoints: [0, 0.4, 0.5, 0.8],
+      initialBreakpoint: 0.8
     });
     await modal.present();
   }

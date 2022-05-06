@@ -41,7 +41,7 @@ export class ModalPlayersComponent implements OnInit {
   }
 
   deleteGiocatore(i: String) {
-    this.listaGiocatori = this.listaGiocatori.filter(p => p != i);
+    this.listaGiocatori.delete(i);
     console.log("dopo eliminazione: ", this.listaGiocatori);
   }
 

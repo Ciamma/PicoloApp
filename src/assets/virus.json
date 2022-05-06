@@ -20,7 +20,7 @@
         "virus_f": "La regola fatta da {giocatore}, se è ancora in vigore, viene eliminata"
     },
     {
-        "virus": "{giocatore} è possibile farti delle domande in qualsiasi momento. Se non rispondi bevi",
+        "virus": "{giocatore} è possibile farti delle domande in qualsiasi momento. Ogni volta che non rispondi bevi {micro_sorsi} sorsi",
         "virus_f": "{giocatore} puoi smettere di rispondere alle domande che ti vengono fatte."
     },
     {
@@ -44,19 +44,19 @@
         "virus_f": "{giocatore}, puoi smettere di dire doppi sensi in ogni frase (se vuoi)"
     },
     {
-        "virus": "{giocatore}, fino a nuovo ordine non potrai pronunciare la prima lettera di ogni parola, pena {micro_sorsi} sorsi",
-        "virus_f": "{giocatore}, puoi pronunciare la prima lettera di ogni parola"
+        "virus": "{giocatore}, fino a nuovo ordine non potrai {azioni_virus}, pena {micro_sorsi} sorsi",
+        "virus_f": "{giocatore}, da ora puoi {azioni_virus}"
     },
     {
-        "virus": "{giocatore}, fino a nuovo ordine non potrai pronunciare l'ultima lettera di ogni parola, pena {micro_sorsi} sorsi",
-        "virus_f": "{giocatore}, puoi pronunciare l'ultima lettera di ogni parola"
+        "virus": "{giocatore}, fino a nuovo ordine non potrai {azioni_virus}, pena {micro_sorsi} sorsi",
+        "virus_f": "{giocatore}, se vuoi puoi ricominciare a {azioni_virus}"
     },
     {
-        "virus": "{giocatore}, ogni volta che un giocatore beve, dovrai dire 'Noo, perchè non posso bere anche io' e bevi 1 sorso, pena 2 sorsi",
+        "virus": "{giocatore}, ogni volta che un giocatore beve, dovrai dire 'Noo, perchè non posso bere anche io' e bevi 1 sorso, pena {micro_sorsi} sorsi",
         "virus_f": "{giocatore}, non dovrai più dire nulla quando un giocatore beve"
     },
     {
-        "virus": "{giocatore}, fino a nuovo ordine dovrà parlare in falsetto, pena {sorsi} sorsi",
+        "virus": "{giocatore}, fino a nuovo ordine dovrà parlare in falsetto, pena {micro_sorsi} sorsi",
         "virus_f": "{giocatore}, puoi smettere di parlare in falsetto (se vuoi)"
     },
     {
@@ -64,7 +64,7 @@
         "virus_f": "{giocatore}, puoi smettere di sibilare ogni s"
     },
     {
-        "virus": "{giocatore} decide una parola che da questo momento sarà vietato pronunciare, pena {sorsi} sorsi",
+        "virus": "{giocatore} decide una parola che da questo momento sarà vietato pronunciare, pena {micro_sorsi} sorsi",
         "virus_f": "Da questo momento si potrà pronunciare la parola vietata da {giocatore}"
     },
     {
@@ -80,7 +80,7 @@
         "virus_f": "{giocatore}, puoi smettere di fare un massaggio a {giocatore1}"
     },
     {
-        "virus": "Bisogna insultare il/la proprio/a vicino/a di {direzione} ogni volta che si beve, pena {sorsi} sorsi",
+        "virus": "Bisogna insultare il/la proprio/a vicino/a di {direzione} ogni volta che si beve, pena {micro_sorsi} sorsi",
         "virus_f": "Da ora si può smettere di insultare il/la proprio/a vicino/a di {direzione}"
     },
     {
@@ -120,7 +120,7 @@
         "virus_f": "Da ora si può parlare con {giocatore}"
     },
     {
-        "virus": "Fino a vuovo ordine chiunque chieda di ripetere qualcosa beve {sorsi} sorsi",
+        "virus": "Fino a nuovo ordine chiunque chieda di ripetere qualcosa beve {sorsi} sorsi",
         "virus_f": "Finalmente si può chiedere di ripetere qualcosa"
     },
     {
@@ -128,36 +128,36 @@
         "virus_f": "Abolito il virus di bere quano cade qualcosa per terra "
     },
     {
-        "virus": "E' vietato usare il verbo '{verbo}', pena 2 sorsi",
+        "virus": "E' vietato usare il verbo '{verbo}', pena {micro_sorsi} sorsi",
         "virus_f": "Da ora in poi si potrà usare il verbo '{verbo}'"
     },
     {
-        "virus": "E' vietato usare la vocale {vocale}, pena 2 sorsi",
+        "virus": "E' vietato usare la vocale {vocale}, pena {micro_sorsi} sorsi",
         "virus_f": "Da ora in poi si potrà usare la vocale '{vocale}'"
     },
     {
-        "virus": "{giocatore} {punizione}. Bevi ogni volta che te ne dimentichi",
+        "virus": "E' vietato usare la lettera {lettera}, pena {micro_sorsi} sorsi",
+        "virus_f": "Da ora in poi si potrà usare la lettera '{lettera}'"
+    },
+    {
+        "virus": "{giocatore} {punizione}. Bevi {micro_sorsi} sorsi ogni volta che te ne dimentichi",
         "virus_f": "{giocatore}, puoi smettere di {punizione}"
     },
     {
-        "virus":"{giocatore} {punizione}. Bevi ogni volta che te ne dimentichi",
-        "virus_f":""
-    },
-    {
-        "virus":"{giocatore} soffrirà della sindrome di Tourette fino a nuovo ordine",
+        "virus":"{giocatore} soffrirà della sindrome di Tourette fino a nuovo ordine ({micro_sorsi} sorsi ogni volta che sbagli)",
         "virus_f":"Hanno trovato una cura per la Tourette. {giocatore} è stato curato"
     },
     {
-        "virus":"{giocatore} è bipolare! Devi dire l'esatto contrario di quello che pensi fino a nuovo ordine!",
+        "virus":"{giocatore} è bipolare! Devi dire l'esatto contrario di quello che pensi fino a nuovo ordine! ({micro_sorsi} sorsi ogni volta che sbagli)",
         "virus_f":"{giocatore} non è più bipolare"
     },
     {
-        "virus":"{giocatore} sei il vecchio saggio! Vietato far vedere i tuoi denti fino a nuovo ordine!",
+        "virus":"{giocatore} sei il vecchio saggio! Vietato far vedere i tuoi denti fino a nuovo ordine! ({micro_sorsi} sorsi ogni volta che sbagli)",
         "virus_f":"Una pozione permette a {giocatore} di tornare giovane"
     },
     {
-        "virus": "{giocatore} non potrà piegare i gomiti, pena {micro_sorsi} sorso",
-        "virus_f": "{giocatore}, puoi ricominciare a piegare i gomiti"
+        "virus":"Mani in alto!! {giocatore} tiene le mani in alto fino a nuovo ordine! ({micro_sorsi} sorsi ogni volta che cedi)",
+        "virus_f":"{giocatore} ora può abbassare le mani"
     },
     {
         "virus": "{giocatore} tiene le mani sulla testa tranne che per bere (pena {sorsi} sorsi ogni volta non lo fa)",
@@ -176,7 +176,7 @@
         "virus_f": "{giocatore} non dovrai più {penitenza} ogni volta che bevi"
     },
     {
-        "virus": "Ogni volta che {giocatore} beve dovrà {penitenza}, pena {micro_sorsi} sorsi",
+        "virus": "Ogni volta che {giocatore} e {giocatore1} bevono, dovranno {penitenza}, pena {micro_sorsi} sorsi ogni volta che ve ne dimenticate",
         "virus_f": "{giocatore} non dovrai più {penitenza} ogni volta che bevi"
     }
 ]

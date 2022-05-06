@@ -1,5 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Filesystem } from '@capacitor/filesystem';
+import { ToastController } from '@ionic/angular';
 import { Frase, Quality, Virus } from './picolomodels';
 
 
@@ -12,11 +14,21 @@ export class PicolodbService {
   urlVirus: String;
   urlQuality: String;
 
+  endpoint: string;
 
-  constructor(public http: HttpClient) {
+
+  constructor(public http: HttpClient, private toast: ToastController) {
     this.urlFrasi = "../../assets/frasi.json";
     this.urlVirus = "../../assets/virus.json";
     this.urlQuality = "../../assets/qualita.json";
+  }
+
+  async toastCreate(message: string) {
+    const notify = await this.toast.create({
+      message: message, //message
+      duration: 500  //durata
+    });
+    notify.present();
   }
 
   getFrasi(): Set<Frase> {
@@ -58,6 +70,14 @@ export class PicolodbService {
     return res;
   }
 
+  creaImpostazioni() {
+    return async () => {
+      await Filesystem.writeFile({
+        path: '../../assets/settings.json',
+        data: "This is a test"
+      });
+      console.log("impostazioni creata");
+    };
+  }
 }
-
 

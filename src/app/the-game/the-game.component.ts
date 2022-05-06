@@ -58,7 +58,6 @@ export class TheGameComponent implements OnInit {
     this.virus_tot = this.db.getVirus();
     this.qualita = this.db.getQualita();
     this.setSips(this.difficolta);
-
   }
 
   ngOnInit() {
@@ -157,8 +156,8 @@ export class TheGameComponent implements OnInit {
           change = this.configureSips(subb);
           this.TEST > 1 ? console.log("sorsi scelto: ", change) : null;
           frase = frase.replace(sub, String(change));
-          if (frase_f != undefined && frase_f.includes(sub))
-            frase_f = frase_f.replace(sub, change);
+          if (change === "1")
+            frase = frase.replace("sorsi", "sorso");
         } else {
           if (subb in this.qualitaUsate === false) {
             this.TEST > 2 ? console.log("qualità mai usata") : null;
@@ -258,7 +257,7 @@ export class TheGameComponent implements OnInit {
       this.turnoCorrente += 1;
     } else if (this.turnoCorrente === this.turni) {
       this.TEST > 0 ? console.log("fine partita") : null;
-      this.frase = "That's All Falks. Alla Prossima";
+      this.frase = "That's All Folks. Alla Prossima";
       this.tipoFrase = "benvenuto";
       this.turnoCorrente += 1;
     } else {
@@ -288,7 +287,7 @@ export class TheGameComponent implements OnInit {
         turni: (mod === "virus" ? undefined : this.turni),
         virusDaMostrare: (mod === "virus" ? this.viewAllVirus() : undefined),
       },
-      breakpoints: (mod === "virus" ? [0, 0.3, 0.5, 0.8] : undefined),
+      breakpoints: (mod === "virus" ? [0.3, 0.5, 0.8] : undefined),
       initialBreakpoint: (mod === 'virus' ? 0.3 : 1)
     });
     if (mod === 'virus') { }
@@ -305,17 +304,9 @@ export class TheGameComponent implements OnInit {
     const modal = await this.modalCtrl.create({
       component: ModalTimerComponent,
       componentProps: {},
-      breakpoints: [0, 0.4, 0.5, 0.8],
+      breakpoints: [0.4, 0.5, 0.8],
       initialBreakpoint: 0.8
     });
     await modal.present();
-  }
-
-  async toastCreate() {
-    await this.toast.create({
-      message: 'Song deleted', //message
-      duration: 2500  //durata
-    });
-    //da aggiungere il present
   }
 }

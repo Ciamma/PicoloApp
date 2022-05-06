@@ -112,7 +112,7 @@
     "tag": "random "
   },
   {
-    "frase": "{sorsi} per chi è andato a dormire {tempo} {ora_notte}. Male!!",
+    "frase": "{sorsi} sorsi per chi è andato a dormire {tempo} {ora_notte}. Male!!",
     "tag": "random  "
   },
   {
@@ -225,10 +225,6 @@
   },
   {
     "frase": "Quelli che hanno flirtato un po’ anche se erano impegnati... {super_sorsi} sorsi di punizione",
-    "tag": "random  "
-  },
-  {
-    "frase": "Chi beve {sorsi} sorsi",
     "tag": "random  "
   },
   {
@@ -448,7 +444,7 @@
     "tag": "games 2Players "
   },
   {
-    "frase": "Gioco delo stronzo! A turno, scegliete qualcuno che berrà {sorsi} sorsi, {giocatore} inizia",
+    "frase": "Gioco dello stronzo! A turno, scegliete qualcuno che berrà {sorsi} sorsi, {giocatore} inizia",
     "tag": "games  "
   },
   {

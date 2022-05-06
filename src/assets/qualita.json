@@ -1,5 +1,19 @@
 [
-  {"nome":"aggettivo_da_definire", "listQ":["un pregio", "un difetto"]},
+  { "nome": "aggettivo_da_definire", "listQ": ["un pregio", "un difetto"] },
+  {
+    "nome": "aggettivo_persona",
+    "listQ": [
+      "gentile",
+      "testarda",
+      "antipatica",
+      "romantica",
+      "complicata in amore",
+      "bella",
+      "brutta",
+      "intelligente",
+      "stupida"
+    ]
+  },
   { "nome": "altezza", "listQ": ["1.60m", "1.70m", "1.80m", "1.90m", "2.00m"] },
   {
     "nome": "argomento_brindisi",
@@ -71,6 +85,15 @@
   { "nome": "azioni", "listQ": ["beve", "distribuisce"] },
   { "nome": "azioni_plurale", "listQ": ["bevono", "distribuiscono"] },
   { "nome": "azioni_secondaPersona", "listQ": ["Bevi", "Distribuisci"] },
+  {
+    "nome": "azioni_virus",
+    "listQ": [
+      "pronunciare la prima lettera di ogni parola",
+      "pronunciare l'ultima lettera di ogni parola",
+      "piegare i gomiti",
+      ""
+    ]
+  },
   {
     "nome": "bevanda",
     "listQ": [
@@ -232,6 +255,8 @@
     "nome": "comando",
     "listQ": [
       "fai vedere le ultime 5 foto del tuo cellulare",
+      "dai uno schiaffo a {giocatore1}",
+      "fai la verticale per 5 secondi",
       "rivela il segno zodiacale di {giocatore1}",
       "chiedi l’amicizia su Facebook ad una persona scelta da {giocatore1}",
       "segui su Instagram una persona scelta da {giocatore1}",
@@ -423,20 +448,22 @@
   {
     "nome": "hai_mai_fatto_plurale",
     "listQ": [
-      "riescono a toccarsi il naso con la lingua", 
+      "riescono a toccarsi il naso con la lingua",
       "hanno già utilizzato dei preservativi {tipo_preservativo}",
-      "si sono mai tinti i capelli", 
-      "hanno flirtato solo per farsi offrire da bere", 
+      "si sono mai tinti i capelli",
+      "hanno flirtato solo per farsi offrire da bere",
       "hanno mai usato risvoltini",
-      "indossano qualcosa di colore {colore}" 
+      "indossano qualcosa di colore {colore}"
     ]
   },
   {
     "nome": "hai_mai_fatto_singolare",
     "listQ": [
       "hai pianto quando è morto Mufasa",
-      "ti sei messo in malattia per i postumi di una sbronza",
+      "{negazione} ti sei messo in malattia per i postumi di una sbronza",
       "hai mai rubato soldi per comprare erba",
+      "hai mai partecipato ad un orgia",
+      "{negazione} hai mai donato il sangue",
       "hai mai fatto sesso {luogo_sesso}",
       "hai mai avuto esperienze sadomaso",
       "vivi ancora con i tuoi genitori",
@@ -446,19 +473,19 @@
       "al polso hai un orologio da {costo}",
       "possiedi due o più macchine",
       "fumi una sigaretta elettronica",
-      "hai già scorreggiato mentre facevi l'amore",
+      "hai mai scorreggiato mentre facevi l'amore",
       "fai la pipì sotto la doccia",
-      "hai già portato un apparecchio per i denti",
+      "hai mai portato un apparecchio per i denti",
       "domani devi lavorare, se è una festività importante (natale, capodanno, pasqua, ...) il doppio",
-      "sei già salito/a su un cavallo",
+      "sei mai salito/a su un cavallo",
       "calzi {calzatura}",
-      "ti sei già masturbato sul tuo luogo di lavoro",
+      "ti sei masturbato sul tuo luogo di lavoro",
       "non hai mai visto nessuno dei film {saghe_film}",
       "ti sei masturbato negli ultimi 2 giorni",
-      "hai a casa {console}",
+      "{negazione} hai a casa {console}",
       "hai a casa {console} con ancora usi",
       "hai a casa {console} con cui hai giocato",
-      "ti sei già pentito di essere andato a letto con qualcuno",
+      "{negazione} ti sei mai pentito di essere andato a letto con qualcuno",
       "sei mai stato/a buttato/a fuori da un locale",
       "hai tra i tuoi amci (gruppo con cui esci) un/una ex",
       "hai spiato il profilo del partner del proprio ex sui social",
@@ -577,6 +604,10 @@
     ]
   },
   {
+    "nome": "negazione",
+    "listQ": ["non", ""]
+  },
+  {
     "nome": "ora_giorno",
     "listQ": [
       "6:00",
@@ -619,9 +650,14 @@
       "natiche",
       "culetto",
       "puzzetta",
+      "lapalissianamente",
+      "zuzzurellone",
+      "pupazza",
       "Paperino",
+      "preservativi {tipo_preservativo}",
       "foto",
       "maneggiare",
+      "Uomo Focaccina",
       "spranga",
       "accarezzare",
       "fuffolina",
@@ -649,7 +685,8 @@
       "merluzzo",
       "po po po",
       "munnez",
-      "fitusu"
+      "fitusu",
+      "igloo"
     ]
   },
   {
@@ -657,6 +694,8 @@
     "listQ": [
       "ululare come un lupo",
       "alzarsi, fare una giravolta e sedersi",
+      "alzarsi e fare la danza della pioggia",
+      "alzarsi e fare la haka",
       "ringraziare il buon Dio",
       "grugnire come un maiale",
       "simulare la trasformazione in super sayan (urlo compreso)",
@@ -674,12 +713,7 @@
   {
     "nome": "persona_da_scegliere",
     "listQ": [
-      "la persona più complicata in amore",
-      "la persona più bella",
-      "la persona più gentile",
-      "la persona più intelligente",
-      "la persona più brutta",
-      "la persona più stupida",
+      "la persona più {aggettivo_persona}",
       "la persona con cui sarebbe difficile vivere insieme",
       "chi ha l'abitudine di dormire prima degli altri nelle serate,"
     ]
@@ -742,8 +776,7 @@
   {
     "nome": "qualita",
     "listQ": [
-      "ha la barba",
-      "non ha la barba",
+      "{negazione} ha la barba",
       "ha i capelli tinti",
       "non mangia verdure",
       "non mangia pesce",
@@ -839,7 +872,16 @@
     ]
   },
   { "nome": "tempo", "listQ": ["prima delle", "dopo le"] },
-  {"nome":"tipo_preservativo", "listQ":["profumati","colorati", "fluorescenti", "ritardanti", "stimolanti"]},
+  {
+    "nome": "tipo_preservativo",
+    "listQ": [
+      "profumati",
+      "colorati",
+      "fluorescenti",
+      "ritardanti",
+      "stimolanti"
+    ]
+  },
   { "nome": "valore", "listQ": ["alto", "basso"] },
   {
     "nome": "verbo",

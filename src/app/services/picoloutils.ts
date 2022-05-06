@@ -20,6 +20,11 @@ export function intersecate(listaPartenza: Set<any>, listaDoppioni: Set<any>): S
     return new Set(Array.from(listaPartenza).filter(x => !listaDoppioni.has(x)));
 }
 
+export function union(listaPartenza: Set<any>, listaDoppioni: Set<any>): Set<any> {
+    listaDoppioni.forEach(x => listaPartenza.add(x));
+    return listaPartenza;
+}
+
 export function checkSets(listaPartenza: Set<any>, listaDoppioni: Set<any>) {
     if (listaPartenza.size === listaDoppioni.size)
         listaDoppioni.clear();
@@ -33,3 +38,4 @@ export function randomTurno(turnoCorrente: number, turni: number): number {
     } else
         return randomizerBetween(turnoCorrente + 5, turnoCorrente + 12);
 }
+

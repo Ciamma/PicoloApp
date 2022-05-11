@@ -53,17 +53,10 @@ export class TheGameComponent implements OnInit {
     this.qualitaUsate = new Map<String, Set<String>>();
     this.sips = new Set<Sips>();
     this.TEST = 0;
-
-    this.frasi_tot = this.db.getFrasi();
-    this.virus_tot = this.db.getVirus();
-    this.qualita = this.db.getQualita();
     this.setSips(this.difficolta);
   }
 
   ngOnInit() {
-    if (this.listaGiocatori.size < 3)
-      frasiFiltrateNumeroGiocatori(this.frasi_tot);
-    this.TEST > 2 ? console.log("Da JSON - lista frasi: ", this.frasi_tot, ", lista virus: ", this.listaVirus, ", lista qualità: ", this.qualita) : null;
     this.maledizioniConcluse = [];
     let virusPossibili = Math.round(this.turni / 100) * 20;
     for (let i = 0; i <= virusPossibili; i++) {
@@ -74,7 +67,20 @@ export class TheGameComponent implements OnInit {
     this.primoTurno();
   }
 
-  ionViewWillEnter() {
+  async ionViewWillEnter() {
+    let status = await this.db.checkStorage();
+    if (!status) {
+      this.frasi_tot = await this.db.getFrasiStorage();
+      this.virus_tot = await this.db.getVirusStorage();
+      this.qualita = await this.db.getQualitaStorage();
+    } else {
+      this.frasi_tot = await this.db.getFrasiFromAsset();
+      this.virus_tot = await this.db.getVirusFromAsset();
+      this.qualita = await this.db.getQualitaFromAsset();
+    }
+    if (this.listaGiocatori.size < 3)
+      frasiFiltrateNumeroGiocatori(this.frasi_tot);
+    this.TEST > 2 ? console.log("Da JSON - lista frasi: ", this.frasi_tot, ", lista virus: ", this.listaVirus, ", lista qualità: ", this.qualita) : null;
     this.setSips(this.difficolta);
     this.turnoCorrente = 1;
   }

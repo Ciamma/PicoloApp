@@ -50,7 +50,6 @@ export class SettingsGameComponent implements OnInit {
   modalitaDrodraga() {
     this.drodraghi = !this.drodraghi;
     this.turni = 3000;
-    console.log(this.drodraghi);
   }
 
   addGiocatore() {

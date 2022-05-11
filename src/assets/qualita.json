@@ -22,7 +22,8 @@
       "a quella cosa che finisce per 'h'",
       "al patriarcato",
       "a quella cosa che finisce per 'no'",
-      "generale alla sorella di {giocatore}"
+      "alla sorella di {giocatore}",
+      "al fratello di {giocatore}"
     ]
   },
   {
@@ -177,7 +178,7 @@
   {
     "nome": "categoria",
     "listQ": [
-      "'I giocatori della {squadra}'",
+      "'I giocatori {squadra}'",
       "'i personaggi di {cartoni_serie_tv}'",
       "'Categorie film porno'",
       "'Oggetti che si strappano'",
@@ -387,7 +388,9 @@
     "nome": "dubbio",
     "listQ": [
       "restare bloccato 5 ore in ascensore o sulla seggiovia?",
-      "liberarsi degli One Direction o di Justin Bieber",
+      "liberarvi degli One Direction o di Justin Bieber",
+      "privarvi per sempre del dolce o del salato?",
+      "bere birra o vino?",
       "Carbonara o Amatriciana",
       "inventare una nuova legge a vostra scelta o sopprimerne una già esistente",
       "poter controllare i tuoi ricordi, o poterli registrare e riviverli",
@@ -833,27 +836,29 @@
   {
     "nome": "squadra",
     "listQ": [
-      "Roma",
-      "Juve",
-      "Milan",
-      "Inter",
-      "Napoli",
-      "Lazio",
-      "Udinese",
-      "Sampdoria",
-      "Borussia Dortmund",
-      "Bologna",
-      "Cagliari",
-      "Sassuolo",
-      "atletico Madrid",
-      "Atalanta",
-      "Torino",
-      "Fiorentina",
-      "Barcellona",
-      "Real Madrid",
-      "Manchester United",
-      "Thottenham",
-      "Chelsea"
+      "della Roma",
+      "della Juve",
+      "del Milan",
+      "dell'Inter",
+      "del Napoli",
+      "della Lazio",
+      "dell'Udinese",
+      "della Sampdoria",
+      "del Borussia Dortmund",
+      "del Bologna",
+      "del Cagliari",
+      "del Sassuolo",
+      "dell'Atletico Madrid",
+      "del Bayern Monaco",
+      "del PSG",
+      "dell'Atalanta",
+      "del Torino",
+      "della Fiorentina",
+      "del Barcellona",
+      "del Real Madrid",
+      "del Manchester United",
+      "del Tottenham",
+      "del Chelsea"
     ]
   },
   { "nome": "studios_film", "listQ": ["Pixar", "Disney", "Marvel"] },

@@ -7,25 +7,30 @@
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <ion-col>
-    <div class="ion-text-center">
-      <h1>Piccolo App</h1>
-      Are you ready to start?
-    </div>
-  </ion-col>
-  <ion-col>
-    <div class='ion-text-center'>
-      <ion-button expand="block" color="warning" shape="round" (click)="goToPage()">
-        New Game
-      </ion-button>
-    </div>
-  </ion-col>
-  <ion-col>
-    <div class="ion-text-center">
-      <div class="prova">
-        <h3>Bevi responsabilmente!!</h3>
-        Questo gioco fa male alla salute, quindi fa attenzione
+<ion-grid>
+    <ion-col>
+      <div class="ion-text-center">
+        <h1>Piccolo App</h1>
+        Are you ready to start?
       </div>
-    </div>
-  </ion-col>
+    </ion-col>
+    <ion-col>
+      <div class='ion-text-center'>
+        <ion-button expand="block" color="warning" shape="round" (click)="goToPage()">
+          New Game
+        </ion-button>
+        <div class="ion-text-center">
+          <h4 style="color: green; font-size: 25px;"> {{this.statusDB}}</h4>
+        </div>
+      </div>
+      </ion-col>
+      <ion-col>
+        <div class="ion-text-center">
+          <div class="prova">
+            <h3>Bevi responsabilmente!!</h3>
+            Questo gioco fa male alla salute, quindi fa attenzione
+          </div>
+        </div>
+      </ion-col>
+</ion-grid>
 </ion-content>

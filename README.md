@@ -9,6 +9,9 @@ are chosen from a list and the players who have to play in the round are randoml
 My version, instead, randomly creates a sentence and chooses both the players who will have to play and the sips they will have to drink as penance 
 according to the chosen difficulty. With this method, you can easily increase the total number of phrases and hardly repeat phrases over the course 
 of several games, allowing players to not always encounter the same rules. In addition there are viruses and phrases added that allow further fun. 
+To simplify database management, the app tries to fetch the material from an external server, if it is not reachable there are phrases within the app that can be used locally
 
 Graphic is simple, I have only 2 months of frontend behind me and I'm still not very familiar with ui/ux, all my creations so far have been 
 developed to be used only from terminal.
+
+

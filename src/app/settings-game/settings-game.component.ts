@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { NavigationExtras } from '@angular/router';
+import { ActivatedRoute, NavigationExtras } from '@angular/router';
 import { NavController } from '@ionic/angular';
 
 @Component({
@@ -13,19 +13,27 @@ export class SettingsGameComponent implements OnInit {
   formUtente: FormGroup;
   listaGiocatori;
   difficolta: number;
-  turni: number = 10;
+  turni: number;
   drodraghi: boolean;
-  constructor(private navCtrl: NavController, private form: FormBuilder) {
+  constructor(private navCtrl: NavController, private form: FormBuilder, private route: ActivatedRoute) {
   }
 
   ngOnInit(): void {
+    //console.log('qp: ', this.route.queryParams);
     this.formUtente = this.form.group({
       'giocatore': ["", [Validators.required, Validators.maxLength(15)]],
     });
-    this.listaGiocatori = ['Gigi', 'Liuk', "Ricky"];
+    this.listaGiocatori = [];
     this.difficolta = 1;
     this.turni = 10;
     this.drodraghi = false;
+  }
+
+  async ionViewWillEnter() {
+    this.route.queryParams.subscribe(params => {
+      //console.log('params settings: ', params);
+      this.listaGiocatori = [...params["giocatori"]];
+    });
   }
 
   goToPage() {
@@ -65,7 +73,7 @@ export class SettingsGameComponent implements OnInit {
 
   aggiornaDifficolta(aggiorna) {
     this.difficolta = aggiorna.detail.value;
-    console.log(this.difficolta);
+    //console.log(this.difficolta);
   }
 
   setNumeroTurni() {

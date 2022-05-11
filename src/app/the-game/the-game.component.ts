@@ -41,6 +41,7 @@ export class TheGameComponent implements OnInit {
   constructor(private navCtrl: NavController, private modalCtrl: ModalController, private toast: ToastController,
     private route: ActivatedRoute, private db: PicolodbService) {
     this.route.queryParams.subscribe(params => {
+      console.log('params theGame: ', params);
       this.listaGiocatori = new Set(params["giocatori"]);
       this.turni = JSON.parse(params["turni"]);
       this.difficolta = params["liv"];
@@ -268,9 +269,10 @@ export class TheGameComponent implements OnInit {
       this.turnoCorrente += 1;
     } else {
       this.TEST > 2 ? console.log("torno alle impostazioni") : null;
+      console.log('giocatori che passo alle settings: ', Array.from(this.listaGiocatori));
       let navigationExtras: NavigationExtras = {
         queryParams: {
-          giocatori: this.listaGiocatori,
+          giocatori: Array.from(this.listaGiocatori),
         }
       }
       this.turnoCorrente = 0;
@@ -301,9 +303,22 @@ export class TheGameComponent implements OnInit {
       modal.onDidDismiss()
         .then((data) => {
           this.listaGiocatori = data['data'];
+          if (this.turni !== 3000) {
+            this.turni = this.setNumeroTurni(this.listaGiocatori.size, this.difficolta);
+            this.TEST > 2 ? console.log("turni aggiornati: ", this.turni, ", lista giocatori: ", this.listaGiocatori.size, 'difficolta: ', this.difficolta) : null;
+          }
         });
     }
     await modal.present();
+  }
+
+  setNumeroTurni(numeroGiocatori: number, difficolta: number): number {
+    if (difficolta == 1)
+      return numeroGiocatori * 5;
+    else if (difficolta == 2)
+      return numeroGiocatori * 8;
+    else if (difficolta == 3)
+      return numeroGiocatori * 10;
   }
 
   async timer() {

@@ -15,18 +15,22 @@ export class SettingsGameComponent implements OnInit {
   difficolta: number;
   turni: number;
   drodraghi: boolean;
+  TEST: boolean;
+
   constructor(private navCtrl: NavController, private form: FormBuilder, private route: ActivatedRoute) {
   }
 
   ngOnInit(): void {
     //console.log('qp: ', this.route.queryParams);
+    this.TEST = false;
     this.formUtente = this.form.group({
       'giocatore': ["", [Validators.required, Validators.maxLength(15)]],
     });
-    this.listaGiocatori = [];
+    this.TEST ? this.listaGiocatori = ["Ricky", "Gigi"] : this.listaGiocatori = [];;
     this.difficolta = 1;
     this.turni = 10;
-    this.drodraghi = false;
+    this.TEST ? this.drodraghi = true : this.drodraghi = false;
+    //console.log(this.drodraghi);
   }
 
   async ionViewWillEnter() {
@@ -37,10 +41,8 @@ export class SettingsGameComponent implements OnInit {
   }
 
   goToPage() {
-    if (!this.drodraghi) {
-      this.setNumeroTurni();
-    }
-
+    this.setNumeroTurni();
+    //console.log(this.turni);
     let navigationExtras: NavigationExtras = {
       queryParams: {
         giocatori: this.listaGiocatori,
@@ -56,8 +58,9 @@ export class SettingsGameComponent implements OnInit {
   }
 
   modalitaDrodraga() {
-    this.drodraghi = !this.drodraghi;
-    this.turni = 3000;
+    this.drodraghi = this.drodraghi ? true : false;
+    this.difficolta = 2;
+    //console.log("drodraghi: ", this.drodraghi);
   }
 
   addGiocatore() {
@@ -77,17 +80,21 @@ export class SettingsGameComponent implements OnInit {
   }
 
   setNumeroTurni() {
-    switch (this.difficolta) {
-      case 1:
-        this.turni = this.listaGiocatori.length * 5;
-        break;
-      case 2:
-        this.turni = this.listaGiocatori.length * 8;
-        break;
-      case 3:
-        this.turni = this.listaGiocatori.length * 10;
-      default:
-        break;
+    if (this.drodraghi)
+      this.turni = 3000;
+    else {
+      switch (this.difficolta) {
+        case 1:
+          this.turni = this.listaGiocatori.length * 5;
+          break;
+        case 2:
+          this.turni = this.listaGiocatori.length * 8;
+          break;
+        case 3:
+          this.turni = this.listaGiocatori.length * 10;
+        default:
+          break;
+      }
     }
   }
 

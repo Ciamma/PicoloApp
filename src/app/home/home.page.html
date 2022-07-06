@@ -16,7 +16,7 @@
     </ion-col>
     <ion-col>
       <div class='ion-text-center'>
-        <ion-button expand="block" color="warning" shape="round" (click)="goToPage()">
+        <ion-button expand="block" color="warning" shape="round" (click)="goToPage()" [disabled]="statusDB==='Caricamento...'">
           New Game
         </ion-button>
         <div class="ion-text-center">

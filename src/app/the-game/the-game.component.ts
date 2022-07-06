@@ -41,7 +41,7 @@ export class TheGameComponent implements OnInit {
   constructor(private navCtrl: NavController, private modalCtrl: ModalController, private toast: ToastController,
     private route: ActivatedRoute, private db: PicolodbService) {
     this.route.queryParams.subscribe(params => {
-      console.log('params theGame: ', params);
+      // console.log('params theGame: ', params);
       this.listaGiocatori = new Set(params["giocatori"]);
       this.turni = JSON.parse(params["turni"]);
       this.difficolta = params["liv"];
@@ -79,8 +79,13 @@ export class TheGameComponent implements OnInit {
       this.virus_tot = await this.db.getVirusFromAsset();
       this.qualita = await this.db.getQualitaFromAsset();
     }
-    if (this.listaGiocatori.size < 3)
-      frasiFiltrateNumeroGiocatori(this.frasi_tot);
+    if (this.listaGiocatori.size < 3) {
+      this.frasi_tot = new Set(Array.from(this.frasi_tot).filter(p => !p.frase.includes("giocatore2")));
+      this.virus_tot = new Set(Array.from(this.virus_tot).filter(p => !p.virus.includes("giocatore2")));
+      // console.log('frasi da togliere: ', Array.from(this.frasi_tot).find(p => p.frase.includes("giocatore2")));
+      // console.log('virus da togliere: ', Array.from(this.virus_tot).find(p => p.virus.includes("giocatore2")));
+    }
+
     this.TEST > 2 ? console.log("Da JSON - lista frasi: ", this.frasi_tot, ", lista virus: ", this.listaVirus, ", lista qualità: ", this.qualita) : null;
     this.setSips(this.difficolta);
     this.turnoCorrente = 1;
@@ -269,7 +274,7 @@ export class TheGameComponent implements OnInit {
       this.turnoCorrente += 1;
     } else {
       this.TEST > 2 ? console.log("torno alle impostazioni") : null;
-      console.log('giocatori che passo alle settings: ', Array.from(this.listaGiocatori));
+      //console.log('giocatori che passo alle settings: ', Array.from(this.listaGiocatori));
       let navigationExtras: NavigationExtras = {
         queryParams: {
           giocatori: Array.from(this.listaGiocatori),

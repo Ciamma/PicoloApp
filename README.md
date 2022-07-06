@@ -1,5 +1,7 @@
-# PicoloApp
+# PicoloApp ![Alt text](/src/assets/beer.png)
 Wlcome to my first app: **Picolo**.
+
+
 
 Picolo is a drinking game that allows you to spend nice evenings with friends: just follow the instructions or answer the questions that the game proposes.
 
@@ -14,4 +16,20 @@ To simplify database management, the app tries to fetch the material from an ext
 Graphic is simple, I have only 2 months of frontend behind me and I'm still not very familiar with ui/ux, all my creations so far have been 
 developed to be used only from terminal.
 
+
+In this version, we have the following features:
+
+1. get db from external source
+2. possibility to customize a game 
+3. during the game you could add/edit/remove players and you can see which viruses are in play
+4. there is a timer for some gaming comands to simplify the usability
+
+What is currently not working:
+
+**x**
+
+Future implementations:
+
+1. being able to suggest a question
+2. report possible sentence errors directly from the game
 

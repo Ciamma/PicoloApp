@@ -24,9 +24,7 @@ In this version, we have the following features:
 3. during the game you could add/edit/remove players and you can see which viruses are in play
 4. there is a timer for some gaming comands to simplify the usability
 
-What is currently not working:
-
-**x**
+What is currently not working: **/**
 
 Future implementations:
 

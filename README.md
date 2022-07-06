@@ -32,4 +32,5 @@ Future implementations:
 2. report possible sentence errors directly from the game
 
 When I have time I will try to finalize the project, although already now I can call it finished.
+#### If you want to try it you can download the latest apk in release and if you like it don't forget to give me a star
 

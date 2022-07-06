@@ -31,3 +31,5 @@ Future implementations:
 1. being able to suggest a question
 2. report possible sentence errors directly from the game
 
+When I have time I will try to finalize the project, although already now I can call it finished.
+

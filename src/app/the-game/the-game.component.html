@@ -1,4 +1,7 @@
 <ion-content fullscreen [class]='changeBackground()' (click)="newTurn()">
+  <div *ngIf="turni >=3000">
+    <ion-text class="numeroturni">{{turnoCorrente}}</ion-text>
+  </div>
   <div class="ion-text-center-frase">
     <ion-text justify-content-center>{{frase}}</ion-text>
   </div>

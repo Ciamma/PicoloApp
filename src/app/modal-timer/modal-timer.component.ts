@@ -16,12 +16,14 @@ export class ModalTimerComponent implements OnInit {
   start: boolean;
   stop: boolean;
   restart: boolean;
+  error: boolean;
 
   constructor(private modalCtrl: ModalController, private toast: ToastController) { }
 
   ngOnInit() {
     this.timers = 10;
     this.start = this.stop = this.restart = false;
+    this.error = false;
   }
 
   dismissModal() {
@@ -49,25 +51,30 @@ export class ModalTimerComponent implements OnInit {
   }
 
   async countDown() {
-    let secondi = this.secs.value + 1;
-    this.countdownDisplay = String(secondi);
-    this.start = true;
-    while (secondi > 0) {
-      if (this.restart) {
-        secondi = this.secs.value + 1;
-        this.restart = false;
-      }
-      if (this.stop) {
-        this.countdownDisplay = undefined;
-        this.start = this.stop = false;
-        break;
-      }
-      secondi--;
+    if (!isNaN(this.secs.value)) {
+      this.error = false;
+      let secondi = +this.secs.value + 1;
       this.countdownDisplay = String(secondi);
-      await this.delay(1000);
+      this.start = true;
+      while (secondi > 0) {
+        if (this.restart) {
+          secondi = this.secs.value + 1;
+          this.restart = false;
+        }
+        if (this.stop) {
+          this.countdownDisplay = undefined;
+          this.start = this.stop = false;
+          break;
+        }
+        secondi--;
+        this.countdownDisplay = String(secondi);
+        await this.delay(1000);
+      }
+      this.start = false;
+      this.toastCreate();
+    } else {
+      this.error = true;
     }
-    this.start = false;
-    this.toastCreate();
   }
 }
 

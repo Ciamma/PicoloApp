@@ -14,13 +14,13 @@
     <ion-label>
       <h2>inserisci secondi:</h2>
     </ion-label>
-    <ion-input [formControl]="secs"></ion-input>
+    <ion-input type="number" min=0 [formControl]=" secs"></ion-input>
     </ion-item>
   <div class="ion-text-center">
     <h1 *ngIf="countdownDisplay">{{countdownDisplay}}</h1>
-    <ion-text justify-content-center color="danger" *ngIf="this.error">
+    <!-- <ion-text justify-content-center color="danger" *ngIf="this.error">
       Questo timer accetta solo numeri in base 10!
-    </ion-text>
+    </ion-text> -->
   </div>
   <ion-button *ngIf="start ===false" expand="block" size="large" color="primary" (click)="countDown()">start
     countdown</ion-button>

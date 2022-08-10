@@ -24,10 +24,13 @@ export class PicolodbService {
     this.urlQuality = "../../assets/qualita.json";
   }
 
-  async toastCreate(message: string,) {
+  async toastCreate(message: string, color?: string) {
     const notify = await this.toast.create({
       message: message, //message
-      duration: 500  //durata
+      position: 'middle',
+      color: color ? color : "primary",
+      cssClass: "backtoast",
+      duration: 600  //durata
     });
     notify.present();
   }
@@ -110,14 +113,14 @@ export class PicolodbService {
     let data = await this.storage.getString("dataUpdate");
     let dataServer = await this.getLastUpdateData();
     if (statusDB) {
-      this.toastCreate("Prendo il database online, aggiornamento...");
+      this.toastCreate("Prendo il database online, aggiornamento...", "light");
       return this.upgradeDB(true, frasi, virus, qualita);
     } else if (data.value !== dataServer || data == null) {
-      this.toastCreate("Nuova versione Db, aggiornamento...");
+      this.toastCreate("Nuova versione Db, aggiornamento...", "secondary");
       return this.upgradeDB(false, dataServer, frasi, virus, qualita);
     }
     else {
-      this.toastCreate("Hai la versione più recente del batabase");
+      this.toastCreate("Hai la versione più recente del batabase", "success");
     }
   }
   async upgradeDB(firstTime: boolean, dataServer: string, frasi?: any, virus?: any, qualita?: any) {

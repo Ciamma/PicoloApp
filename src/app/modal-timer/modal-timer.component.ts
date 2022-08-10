@@ -11,19 +11,18 @@ import { ModalController, ToastController } from '@ionic/angular';
 })
 export class ModalTimerComponent implements OnInit {
   secs = new FormControl(10);
+  seconds: number
   timers: number;
   countdownDisplay?: string;
   start: boolean;
   stop: boolean;
   restart: boolean;
-  error: boolean;
 
   constructor(private modalCtrl: ModalController, private toast: ToastController) { }
 
   ngOnInit() {
     this.timers = 10;
     this.start = this.stop = this.restart = false;
-    this.error = false;
   }
 
   dismissModal() {
@@ -33,8 +32,10 @@ export class ModalTimerComponent implements OnInit {
   async toastCreate() {
     const notify = await this.toast.create({
       message: 'Timer concluso, è ora di bere!!!', //message
-      duration: 500  //durata
-
+      position: 'middle',
+      color: "warning",
+      cssClass: "backtoast",
+      duration: 900  //durata
     });
     notify.present();
     //da aggiungere il present
@@ -42,7 +43,6 @@ export class ModalTimerComponent implements OnInit {
 
   async restartTimer() {
     this.stop = true;
-    await this.delay(1000);
     this.countDown();
   }
 
@@ -51,30 +51,25 @@ export class ModalTimerComponent implements OnInit {
   }
 
   async countDown() {
-    if (!isNaN(this.secs.value)) {
-      this.error = false;
-      let secondi = +this.secs.value + 1;
-      this.countdownDisplay = String(secondi);
-      this.start = true;
-      while (secondi > 0) {
-        if (this.restart) {
-          secondi = this.secs.value + 1;
-          this.restart = false;
-        }
-        if (this.stop) {
-          this.countdownDisplay = undefined;
-          this.start = this.stop = false;
-          break;
-        }
-        secondi--;
-        this.countdownDisplay = String(secondi);
-        await this.delay(1000);
+    let secondi = +this.secs.value + 1;
+    this.countdownDisplay = String(secondi);
+    this.start = true;
+    while (secondi > 0) {
+      if (this.restart) {
+        secondi = this.secs.value + 1;
+        this.restart = false;
       }
-      this.start = false;
-      this.toastCreate();
-    } else {
-      this.error = true;
+      if (this.stop) {
+        this.countdownDisplay = undefined;
+        this.start = this.stop = false;
+        break;
+      }
+      secondi--;
+      this.countdownDisplay = String(secondi);
+      await this.delay(1000);
     }
+    this.start = false;
+    this.toastCreate();
   }
 }
 

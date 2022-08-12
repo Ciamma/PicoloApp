@@ -98,6 +98,23 @@ export class PicolodbService {
     return res;
   }
 
+  async storeQualitaDoppie(qualita: Map<String, Set<String>>) {
+    var res = Object.fromEntries(qualita);
+    for (let key of qualita.keys())
+      res[String(key)] = Array.from(qualita.get(key))
+    this.storage.setItemJson("qualitaDoppie", res);
+  }
+
+  async getQualitaDoppie() {
+    var res: Map<String, Set<String>> = new Map<String, Set<String>>();
+    let data = await this.storage.getItemJson("qualitaDoppie");
+    for (let key of Object.keys(data)) {
+      res.set(key, new Set(data[key]));
+    }
+    //console.log('doppi: ', res)
+    return res;
+  }
+
   async checkStorage() {
     let frasi = await this.storage.getItemJson("frasi");
     let virus = await this.storage.getItemJson("virus");

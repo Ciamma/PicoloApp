@@ -23,6 +23,7 @@ export class TheGameComponent implements OnInit {
   virusTurni: Set<number>; // lista dei turni in cui si verificheranno virus
   qualita: Quality[];
   qualitaUsate: Map<String, Set<String>>;  // qualità usate durante una sessione di gioco
+  qualitaNonDoppie: String[]  // qualità che non devono essere contate come usate
   listaGiocatori: Set<string>;  // lista dei giocatori che partecipano
   maledizioniConcluse: String[];  // permette di visualizzare le maledizioni concluse(array di appoggio)
   tipoFrase: String;  //il tipo della frase
@@ -52,8 +53,9 @@ export class TheGameComponent implements OnInit {
     this.virusTurni = new Set<number>();
     this.qualita = [];
     this.qualitaUsate = new Map<String, Set<String>>();
+    this.qualitaNonDoppie = ['azioni', 'azioni_plurale', 'azioni_secondaPersona'];
     this.sips = new Set<Sips>();
-    this.TEST = 0;
+    this.TEST = 1;
     this.setSips(this.difficolta);
   }
 
@@ -79,6 +81,7 @@ export class TheGameComponent implements OnInit {
       this.virus_tot = await this.db.getVirusFromAsset();
       this.qualita = await this.db.getQualitaFromAsset();
     }
+    this.qualitaUsate = await this.db.getQualitaDoppie()
     if (this.listaGiocatori.size < 3) {
       this.frasi_tot = new Set(Array.from(this.frasi_tot).filter(p => !p.frase.includes("giocatore2")));
       this.virus_tot = new Set(Array.from(this.virus_tot).filter(p => !p.virus.includes("giocatore2")));
@@ -124,8 +127,8 @@ export class TheGameComponent implements OnInit {
       this.TEST > 1 ? console.log("lista qualità da sostituire: ", qualita) : null;
       if (qualita.length === 0)
         return "";
-      if (this.qualitaUsate[tipo].size > 0) { // devo filtrare la lista con i doppioni già usati
-        qualitaPescabii = qualita[0].listQ.filter(q => !this.qualitaUsate[tipo].has(q));
+      if (this.qualitaUsate.get(tipo).size > 0) { // devo filtrare la lista con i doppioni già usati
+        qualitaPescabii = qualita[0].listQ.filter(q => !this.qualitaUsate.get(tipo).has(q));
         this.TEST > 2 ? console.log("lista qualità da sostituire dopo filtraggio: ", qualitaPescabii) : null;
       } else {
         qualitaPescabii = qualita[0].listQ;
@@ -147,14 +150,14 @@ export class TheGameComponent implements OnInit {
     const regex = /\{(.*?)\}/g;
     let cont = new Set(frase.match(regex));
     let change = "";
-    while (cont.size > 0) {
+    while (cont.size > 0) {   // fino a quando non ci sono sostituzioni da fare
       cont.forEach(sub => {
         cont.delete(sub);
         let subb = sub.replace("{", "").replace("}", "").trim();
-        if (subb.includes("parola"))
+        if (subb.includes("parola"))          
           subb = "parola";
         this.TEST > 1 ? console.log("qualità da cambiare: ", subb) : null;
-        if (sub.includes("giocatore")) {
+        if (sub.includes("giocatore")) {              // definisco il giocatore/i giocatori coinvolti nella frase
           change = this.findWord(subb, giocatoriScelti);
           this.TEST > 1 ? console.log("giocatore scelto: ", change) : null;
           if (giocatoriScelti.size == this.listaGiocatori.size)
@@ -163,24 +166,29 @@ export class TheGameComponent implements OnInit {
           frase = frase.replace(sub, change);
           if (frase_f != undefined && frase_f.includes(sub))
             frase_f = frase_f.replace(sub, change);
-        }
-        else if (sub.includes("sorsi")) {
+        }                                           
+        else if (sub.includes("sorsi")) {             // definisco i sorsi da dare
           change = this.configureSips(subb);
           this.TEST > 1 ? console.log("sorsi scelto: ", change) : null;
           frase = frase.replace(sub, String(change));
           if (change === "1")
             frase = frase.replace("sorsi", "sorso");
-        } else {
-          if (subb in this.qualitaUsate === false) {
+        } else {                                      //una qualunque altra sostituzione
+          if (!(this.qualitaUsate.has(subb) || this.qualitaNonDoppie.includes(subb))) { //verifico se la qualità è mai stata usata e non è tra quelle da lasciar correre
             this.TEST > 2 ? console.log("qualità mai usata") : null;
-            this.qualitaUsate[subb] = new Set<String>();
+            this.qualitaUsate.set(subb, new Set<String>());
           }
           change = this.findWord(subb);
           this.TEST > 1 ? console.log("qualita scelta: ", change) : null;
-          this.qualitaUsate[subb].add(change);
-          if (this.qualitaUsate[subb].size === this.qualita.filter(q => q.nome === subb)[0].listQ.length)
-            this.qualitaUsate[subb].clear();
-          this.TEST > 2 ? console.log("qualità totali: ", this.qualita, ", lista qualità cercata: ", this.qualitaUsate[subb]) : null;
+          if (!this.qualitaNonDoppie.includes(subb)) {    //la qualità non è tra quelle che devono essere segnate
+            this.qualitaUsate.get(subb).add(change);
+            if (this.qualitaUsate.get(subb).size === this.qualita.filter(q => q.nome === subb)[0].listQ.length) {//sonost  state usate tutte le possibili combinazioni?
+              this.TEST > 2 ? console.log('ho usato tutte le possibili combinazioni') : null;
+              this.qualitaUsate.get(subb).clear();
+            }
+          }
+          this.TEST > 2 ? console.log("qualità totali: ", this.qualita, ", lista qualità cercata: ", this.qualitaUsate.get(subb)) : null;
+          this.TEST > 1 ? console.log('lista qualita doppie: ', this.qualitaUsate) : null;
           frase = frase.replace(sub, change);
           if (frase_f != undefined && frase_f.includes(sub))
             frase_f = frase_f.replace(sub, change);
@@ -264,7 +272,8 @@ export class TheGameComponent implements OnInit {
       if (this.virusTurni.has(this.turnoCorrente)) {
         this.chooseFrase(true);
       } else {
-        this.chooseFrase();
+        this.chooseFrase()
+        this.db.storeQualitaDoppie(this.qualitaUsate)
       }
       this.turnoCorrente += 1;
     } else if (this.turnoCorrente === this.turni) {
@@ -275,6 +284,8 @@ export class TheGameComponent implements OnInit {
     } else {
       this.TEST > 2 ? console.log("torno alle impostazioni") : null;
       //console.log('giocatori che passo alle settings: ', Array.from(this.listaGiocatori));
+      //console.log('sto per salvare queste qualita: ', this.qualitaUsate)
+      this.db.storeQualitaDoppie(this.qualitaUsate)
       let navigationExtras: NavigationExtras = {
         queryParams: {
           giocatori: Array.from(this.listaGiocatori),

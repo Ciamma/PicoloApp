@@ -1,35 +1,41 @@
-<ion-header [translucent]="true">
+<!-- <ion-header [translucent]="true">
   <ion-toolbar>
     <ion-title>
       Picolo
     </ion-title>
   </ion-toolbar>
-</ion-header>
+</ion-header> -->
 
 <ion-content [fullscreen]="true">
 <ion-grid>
     <ion-col>
-      <div class="ion-text-center">
-        <h1>Piccolo App</h1>
-        Are you ready to start?
+      <div class="ion-text-center" style="margin-top: 15%;">
+        <h1 style="font-family:Rock Salt; font-size: 50px;">Piccolo App</h1>
+        <h3 style="font-family:Rock Salt">Are you ready to start?</h3>
       </div>
     </ion-col>
     <ion-col>
       <div class='ion-text-center'>
-        <ion-button expand="block" color="warning" shape="round" (click)="goToPage()" [disabled]="statusDB==='Caricamento...'">
+        <ion-button expand="block" color="warning" shape="round" (click)="goToPage()" [disabled]="buttonDisabled">
           New Game
         </ion-button>
         <div class="ion-text-center">
-          <h4 style="color: green; font-size: 25px;"> {{this.statusDB}}</h4>
+          <h4 style="font-family:Rock Salt; color: green; font-size: 25px;"> {{this.statusDB}}</h4>
+          <ion-button *ngIf="updateAvailable" expand="block" color="warning" style="margin-left: 30%;margin-right: 30%;"
+            shape="round" (click)="updateDB()">
+            Aggiorna Frasi
+          </ion-button>
         </div>
       </div>
       </ion-col>
       <ion-col>
         <div class="ion-text-center">
           <div class="prova">
-            <h3>Bevi responsabilmente!!</h3>
-            Questo gioco fa male alla salute, quindi fa attenzione
+            <h3 style="font-family:Rock Salt">Bevi responsabilmente!!</h3>
           </div>
+          <ion-button (click)="rules()">
+            <h4>Regole Gioco</h4>
+          </ion-button>
         </div>
       </ion-col>
 </ion-grid>

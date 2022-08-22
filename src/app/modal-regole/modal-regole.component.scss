@@ -1,0 +1,17 @@
+ion-content.background {
+    --background: url(../../assets/tavola.jpg) 0 0/100% 100% no-repeat;
+    opacity: 80%;
+}
+
+.regola {
+    background: transparent;
+}
+
+.testoRegola {
+    font-family: Yanone Kaffeesatz;
+    padding-top: 20px;
+    padding-bottom: 50px;
+    margin-top: 20;
+    margin-bottom: 5px;
+    font-size: 21px;
+}

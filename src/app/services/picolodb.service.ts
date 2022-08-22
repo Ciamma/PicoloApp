@@ -119,42 +119,45 @@ export class PicolodbService {
     let frasi = await this.storage.getItemJson("frasi");
     let virus = await this.storage.getItemJson("virus");
     let qualita = await this.storage.getItemJson("qualita");
-    return (frasi == null || virus == null || qualita == null);
+    return (frasi === null || virus == null || qualita == null);
   }
 
   async verifyDB() {
-    let frasi = await this.storage.getItemJson("frasi");
-    let virus = await this.storage.getItemJson("virus");
-    let qualita = await this.storage.getItemJson("qualita");
     let statusDB = await this.checkStorage();
     let data = await this.storage.getString("dataUpdate");
     let dataServer = await this.getLastUpdateData();
     if (statusDB) {
       this.toastCreate("Prendo il database online, aggiornamento...", "light");
-      return this.upgradeDB(true, frasi, virus, qualita);
-    } else if (data.value !== dataServer || data == null) {
+      let frasi = await this.storage.getItemJson("frasi");
+      let virus = await this.storage.getItemJson("virus");
+      let qualita = await this.storage.getItemJson("qualita");
+      return this.upgradeDB();
+    } else if (data === undefined || Date.parse(data.value) < Date.parse(dataServer)) {
       this.toastCreate("Nuova versione Db, aggiornamento...", "secondary");
-      return this.upgradeDB(false, dataServer, frasi, virus, qualita);
+      let frasi = await this.storage.getItemJson("frasi");
+      let virus = await this.storage.getItemJson("virus");
+      let qualita = await this.storage.getItemJson("qualita");
+      return this.upgradeDB();
     }
     else {
       this.toastCreate("Hai la versione più recente del batabase", "success");
     }
   }
-  async upgradeDB(firstTime: boolean, dataServer: string, frasi?: any, virus?: any, qualita?: any) {
-    if (firstTime) {
-      frasi == null ? await this.getOnline("frasi") : null;
-      virus == null ? await this.getOnline("virus") : null;
-      qualita == null ? await this.getOnline("qualita") : null;
-    }
-    else {
-      await this.getOnline("frasi");
-      await this.getOnline("virus");
-      await this.getOnline("qualita");
-      //todo DEVO AGGIORNARE LA DATA
-    }
-    this.storage.setItem("dataUpdate", dataServer);
+
+  async checkUpdate() {
+    let data = await this.storage.getString("dataUpdate");
+    console.log(Date.parse(data.value), Date.parse(await this.getLastUpdateData()), Date.parse(data.value) < Date.parse(await this.getLastUpdateData()))
+    return data.value === null || data.value === 'null' || Date.parse(data.value) < Date.parse(await this.getLastUpdateData());
+  }
+
+  async upgradeDB() {
+    await this.getOnline("frasi");
+    await this.getOnline("virus");
+    await this.getOnline("qualita");
+    this.storage.setItem("dataUpdate", await this.getLastUpdateData());
     this.toastCreate("Aggiornamento Completato");
   }
+
   async getLastUpdateData() {
     let url: string = "https://picoloservice.herokuapp.com/";
     return Http.request({
@@ -164,6 +167,7 @@ export class PicolodbService {
       return res.data.data;
     });
   }
+
   async getOnline(substring: string) {
     let url: string = "https://picoloservice.herokuapp.com/ppp".replace('ppp', substring);
     await Http.request({
@@ -185,6 +189,8 @@ export class PicolodbService {
           this.storage.setItemJson("qualita", res.data);
         // let qualita = this.storage.getItemJson("qualita");
         // console.log('qualita salvate nel db check: ', qualita);
+        case "":
+          this.storage.setItemJson
       }
     });
   }

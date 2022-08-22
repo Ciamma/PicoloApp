@@ -25,6 +25,20 @@
 @import "~@ionic/angular/css/text-transformation.css";
 @import "~@ionic/angular/css/flex-utils.css";
 
+@font-face {
+    font-family: 'Rock Salt'; //titolo app
+    src: url('./assets/fonts/RockSalt/RockSalt-Regular.ttf');
+}
+
+@font-face {
+    font-family: 'Yanone Kaffeesatz'; //tavole legge
+    src: url('./assets/fonts/YanoneKaffeesatz/YanoneKaffeesatz-Medium.ttf');
+}
+
+@font-face {
+    font-family: 'DynaPuff'; //tavole legge
+    src: url('./assets/fonts/DynaPuff/DynaPuff/DynaPuff-Medium.ttf');
+}
 .backtoast {
     text-align: center;
     font-weight: bold;

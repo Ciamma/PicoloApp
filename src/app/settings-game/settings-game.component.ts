@@ -59,6 +59,10 @@ export class SettingsGameComponent implements OnInit {
     return s !== undefined || s !== ' ';
   }
 
+  nomeMaiuscolo(nome: string) {
+    return nome.charAt(0).toUpperCase() + nome.slice(1);
+  }
+
   modalitaDrodraga() {
     this.drodraghi = this.drodraghi ? true : false;
     this.difficolta = 2;
@@ -68,7 +72,7 @@ export class SettingsGameComponent implements OnInit {
   addGiocatore() {
     let giocatore = this.formUtente.get('giocatore').value;
     if (this.stringaValida(giocatore))
-      this.listaGiocatori.push(giocatore);
+      this.listaGiocatori.push(this.nomeMaiuscolo(giocatore));
     this.formUtente.get('giocatore').reset();
   }
 

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, NavigationExtras } from '@angular/router';
-import { ModalController, NavController, ToastController } from '@ionic/angular';
+import { ModalController, NavController, ToastController, Platform } from '@ionic/angular';
 import { ModalPlayersComponent } from '../modal-players/modal-players.component';
 import { ModalTimerComponent } from '../modal-timer/modal-timer.component';
 import { ModalVirusComponent } from '../modal-virus/modal-virus.component';
@@ -39,7 +39,7 @@ export class TheGameComponent implements OnInit {
                         3- massimo(turno, frase, virus conclusi, virus in corso, parole sostituite, liste e insiemi) */
 
 
-  constructor(private navCtrl: NavController, private modalCtrl: ModalController, private toast: ToastController,
+  constructor(private navCtrl: NavController, private modalCtrl: ModalController, private platform: Platform, private toast: ToastController,
     private route: ActivatedRoute, private db: PicolodbService) {
     this.route.queryParams.subscribe(params => {
       // console.log('params theGame: ', params);
@@ -88,7 +88,6 @@ export class TheGameComponent implements OnInit {
       // console.log('frasi da togliere: ', Array.from(this.frasi_tot).find(p => p.frase.includes("giocatore2")));
       // console.log('virus da togliere: ', Array.from(this.virus_tot).find(p => p.virus.includes("giocatore2")));
     }
-
     this.TEST > 2 ? console.log("Da JSON - lista frasi: ", this.frasi_tot, ", lista virus: ", this.listaVirus, ", lista qualità: ", this.qualita) : null;
     this.setSips(this.difficolta);
     this.turnoCorrente = 1;
@@ -154,11 +153,11 @@ export class TheGameComponent implements OnInit {
       cont.forEach(sub => {
         cont.delete(sub);
         let subb = sub.replace("{", "").replace("}", "").trim();
-        if (subb.includes("parola"))          
+        if (subb.includes("parola"))
           subb = "parola";
         this.TEST > 1 ? console.log("qualità da cambiare: ", subb) : null;
         if (sub.includes("giocatore")) {              // definisco il giocatore/i giocatori coinvolti nella frase
-          change = this.findWord(subb, giocatoriScelti);
+          change = this.findWord(subb, giocatoriScelti);   //scelgo un giocatore che non è stato già scelto
           this.TEST > 1 ? console.log("giocatore scelto: ", change) : null;
           if (giocatoriScelti.size == this.listaGiocatori.size)
             giocatoriScelti.clear();
@@ -166,7 +165,7 @@ export class TheGameComponent implements OnInit {
           frase = frase.replace(sub, change);
           if (frase_f != undefined && frase_f.includes(sub))
             frase_f = frase_f.replace(sub, change);
-        }                                           
+        }
         else if (sub.includes("sorsi")) {             // definisco i sorsi da dare
           change = this.configureSips(subb);
           this.TEST > 1 ? console.log("sorsi scelto: ", change) : null;
@@ -327,6 +326,20 @@ export class TheGameComponent implements OnInit {
     }
     await modal.present();
   }
+
+  // backButtonEvent() {
+  //   this.platform.backButton.subscribeWithPriority(15, async () => {
+  //     console.log(this.qualitaUsate)
+  //     this.db.storeQualitaDoppie(this.qualitaUsate)
+  //     let navigationExtras: NavigationExtras = {
+  //       queryParams: {
+  //         giocatori: Array.from(this.listaGiocatori),
+  //       }
+  //     }
+  //     this.turnoCorrente = 0;
+  //     this.navCtrl.navigateForward(['config'], navigationExtras);
+  //   })
+  // }
 
   setNumeroTurni(numeroGiocatori: number, difficolta: number): number {
     if (difficolta == 1)

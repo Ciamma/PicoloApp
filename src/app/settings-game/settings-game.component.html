@@ -7,7 +7,7 @@
 <ion-content>
   <ion-card class="card-giocatori">
     <ion-card-header>
-      <ion-card-title class="text-center">Giocatori</ion-card-title>
+      <ion-card-title class="text-center" style="font-family:Rock Salt">Giocatori</ion-card-title>
     </ion-card-header>
 
     <ion-card-content>
@@ -30,7 +30,7 @@
           <div *ngIf="listaGiocatori.length > 0">
             <ion-infinite-scroll>
               <ion-list>
-                <ion-item class="player-label" slot="left" *ngFor="let i of listaGiocatori"> {{i}}
+                <ion-item class="player-label" style="font-family:Rock Salt" slot="left" *ngFor="let i of listaGiocatori"> {{i}}
                   <ion-button slot="end" color="danger" type="submit" (click)="deleteGiocatore(i)">
                     <ion-icon name="trash-outline"></ion-icon>
                   </ion-button>
@@ -45,7 +45,7 @@
 
   <ion-card>
     <ion-card-header>
-      <ion-card-title>Difficoltà</ion-card-title>
+      <ion-card-title style="font-family:Rock Salt">Difficoltà</ion-card-title>
     </ion-card-header>
 
     <ion-card-content>

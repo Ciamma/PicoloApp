@@ -7,8 +7,11 @@
   </div>
   <div *ngIf="maledizioniConcluse.length > 0">
     <ion-list mode="md" class="lista-virus-conclusi">
-      <ion-title class="ion-text-center"> Maledizioni Concluse</ion-title>
-      <ion-item class="ion-text-center" lines="none" color="none" *ngFor="let v of this.maledizioniConcluse">
+      <ion-title class="ion-text-center"
+        style="color:black; font-weight: bold; font-size: 30px; font-family: Yanone Kaffeesatz"> Maledizioni Concluse
+      </ion-title>
+      <ion-item class="ion-text-center" style="font-family:DynaPuff" lines="none" color="none"
+        *ngFor="let v of this.maledizioniConcluse">
         {{v}}
       </ion-item>
     </ion-list>

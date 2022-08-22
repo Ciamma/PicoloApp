@@ -10,6 +10,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HomePage } from './home/home.page';
 import { ModalPlayersComponent } from './modal-players/modal-players.component';
+import { ModalRegoleComponent } from './modal-regole/modal-regole.component';
 import { ModalTimerComponent } from './modal-timer/modal-timer.component';
 import { ModalVirusComponent } from './modal-virus/modal-virus.component';
 import { PicoloStorageService } from './services/picolo-storage.service';
@@ -20,7 +21,7 @@ import { TheGameComponent } from './the-game/the-game.component';
 
 
 @NgModule({
-  declarations: [AppComponent, HomePage, SettingsGameComponent, TheGameComponent, ModalPlayersComponent, ModalVirusComponent, ModalTimerComponent],
+  declarations: [AppComponent, HomePage, SettingsGameComponent, TheGameComponent, ModalPlayersComponent, ModalVirusComponent, ModalTimerComponent, ModalRegoleComponent],
   entryComponents: [],
   imports: [BrowserModule,
     IonicModule.forRoot(),

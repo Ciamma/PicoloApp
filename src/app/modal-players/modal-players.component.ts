@@ -31,12 +31,14 @@ export class ModalPlayersComponent implements OnInit {
     return s !== undefined || s !== ' ';
   }
 
+  nomeMaiuscolo(nome: string) {
+    return nome.charAt(0).toUpperCase() + nome.slice(1).toLowerCase();
+  }
+
   addGiocatore() {
     let giocatore = this.formUtente.get('giocatore').value;
-    // console.log(giocatore);
     if (this.stringaValida(giocatore))
-      this.listaGiocatori.add(giocatore);
-    // console.log(this.listaGiocatori);
+      this.listaGiocatori.add(this.nomeMaiuscolo(giocatore));
     this.formUtente.get('giocatore').reset();
   }
 

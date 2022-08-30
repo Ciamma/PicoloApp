@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, NavigationExtras } from '@angular/router';
-import { NavController } from '@ionic/angular';
+import { NavController, Platform } from '@ionic/angular';
 
 @Component({
   selector: 'app-settings-game',
@@ -17,7 +17,7 @@ export class SettingsGameComponent implements OnInit {
   drodraghi: boolean;
   TEST: boolean;
 
-  constructor(private navCtrl: NavController, private form: FormBuilder, private route: ActivatedRoute) {
+  constructor(private navCtrl: NavController, private form: FormBuilder, private platform: Platform, private route: ActivatedRoute) {
   }
 
   ngOnInit(): void {
@@ -31,6 +31,10 @@ export class SettingsGameComponent implements OnInit {
     this.turni = 10;
     this.TEST ? this.drodraghi = true : this.drodraghi = false;
     //console.log(this.drodraghi);
+    this.platform.backButton.subscribeWithPriority(9999, () => {
+      this.listaGiocatori = [];
+      this.navCtrl.navigateForward(['home']);
+    });
   }
 
   async ionViewWillEnter() {
@@ -40,6 +44,14 @@ export class SettingsGameComponent implements OnInit {
         this.listaGiocatori = [...params["giocatori"]];
       });
     }
+    this.platform.backButton.subscribeWithPriority(9999, () => {
+      this.listaGiocatori = [];
+      this.navCtrl.navigateForward(['home']);
+    });
+  }
+
+  async ionViewWillLeave() {
+    this.platform.backButton.complete();
   }
 
   goToPage() {

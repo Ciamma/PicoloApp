@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Storage } from '@capacitor/storage';
+import { Preferences } from '@capacitor/preferences';
 
 @Injectable({
   providedIn: 'root'
@@ -10,32 +10,32 @@ export class PicoloStorageService {
   }
 
   async setItem(key: string, value: any) {
-    await Storage.set({ key, value });
-    return Storage.get({ key });
+    await Preferences.set({ key, value });
+    return Preferences.get({ key });
   }
 
   async getString(key: string): Promise<any> {
-    return (await Storage.get({ key }));
+    return (await Preferences.get({ key }));
   }
 
   async setItemJson(key: string, value: any): Promise<void> {
-    await Storage.set({
+    await Preferences.set({
       key: key,
       value: JSON.stringify(value),
     });
   }
 
   async getItemJson(key: string): Promise<any> {
-    const item = await Storage.get({ key });
+    const item = await Preferences.get({ key });
     return JSON.parse(item.value);
   }
 
   async removeItem(key: string) {
-    await Storage.remove({ key });
+    await Preferences.remove({ key });
   }
 
   async clear() {
-    await Storage.clear();
+    await Preferences.clear();
   }
 
 }

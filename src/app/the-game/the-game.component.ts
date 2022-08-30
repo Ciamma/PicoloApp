@@ -31,7 +31,7 @@ export class TheGameComponent implements OnInit {
   turni: number;  //i turni che sono stati definiti nel setup
   turnoCorrente: number; //il turno corrente
   difficolta: number; // difficoltà gioco
-  sips: Set<Sips>; // lista dei sorsi
+  sips: Sips[]; // lista dei sorsi
   TEST: number;  /* indica il livello di cose da printare: 
                         0-nulla
                         1- minimo(turno,frase)
@@ -54,13 +54,24 @@ export class TheGameComponent implements OnInit {
     this.qualita = [];
     this.qualitaUsate = new Map<String, Set<String>>();
     this.qualitaNonDoppie = ['azioni', 'azioni_plurale', 'azioni_secondaPersona'];
-    this.sips = new Set<Sips>();
+    this.sips = [];
     this.TEST = 1;
-    this.setSips(this.difficolta);
+    this.platform.backButton.subscribeWithPriority(100, async () => {
+      console.log(this.qualitaUsate)
+      this.db.storeQualitaDoppie(this.qualitaUsate)
+      let navigationExtras: NavigationExtras = {
+        queryParams: {
+          giocatori: Array.from(this.listaGiocatori),
+        }
+      }
+      this.turnoCorrente = 0;
+      this.navCtrl.navigateForward(['config'], navigationExtras);
+    })
   }
 
   ngOnInit() {
     this.maledizioniConcluse = [];
+    this.setSips(this.difficolta);
     let virusPossibili = Math.round(this.turni / 100) * 20;
     for (let i = 0; i <= virusPossibili; i++) {
       this.virusTurni.add(randomizer(this.turni));
@@ -68,6 +79,33 @@ export class TheGameComponent implements OnInit {
     this.TEST > 2 ? console.log("Turni in cui compariranno i virus: ", Array.from(this.virusTurni).sort((n1, n2) => n1 - n2)) : null;
     this.turnoCorrente = 1;
     this.primoTurno();
+    this.platform.backButton.subscribeWithPriority(9999, () => {
+      //console.log("prova");
+      this.toastCreate("ho premuto back", "warning");
+      //console.log("nel gioco:", this.qualitaUsate);
+      this.db.storeQualitaDoppie(this.qualitaUsate);
+      let data = this.db.getQualitaDoppie();
+      //console.log("salvate: ", data);
+      let navigationExtras: NavigationExtras = {
+        queryParams: {
+          giocatori: Array.from(this.listaGiocatori),
+        }
+      }
+      this.turnoCorrente = 0;
+      this.navCtrl.navigateForward(['config'], navigationExtras);
+
+    });
+  }
+
+  async toastCreate(message: string, color?: string) {
+    const notify = await this.toast.create({
+      message: message, //message
+      position: 'middle',
+      color: color ? color : "primary",
+      cssClass: "backtoast",
+      duration: 600  //durata
+    });
+    notify.present();
   }
 
   async ionViewWillEnter() {
@@ -91,26 +129,43 @@ export class TheGameComponent implements OnInit {
     this.TEST > 2 ? console.log("Da JSON - lista frasi: ", this.frasi_tot, ", lista virus: ", this.listaVirus, ", lista qualità: ", this.qualita) : null;
     this.setSips(this.difficolta);
     this.turnoCorrente = 1;
+    this.platform.backButton.subscribeWithPriority(9999, () => {
+      //console.log("prova");
+      //this.toastCreate("ho premuto back", "warning");
+      //console.log("nel gioco:", this.qualitaUsate);
+      this.db.storeQualitaDoppie(this.qualitaUsate);
+      let data = this.db.getQualitaDoppie();
+      //console.log("salvate: ", data);
+      let navigationExtras: NavigationExtras = {
+        queryParams: {
+          giocatori: Array.from(this.listaGiocatori),
+        }
+      }
+      this.turnoCorrente = 0;
+      this.navCtrl.navigateForward(['config'], navigationExtras);
+
+    });
   }
 
   ionViewWillLeave() {
-    this.sips.clear();
+    this.platform.backButton.complete();
+    this.sips = [];
     this.turnoCorrente = 0;
   }
 
   setSips(livello: number) {
     if (livello == 1) {
-      this.sips.add(new Sips("micro_sorsi", [1, 2]));
-      this.sips.add(new Sips("sorsi", [2, 3, 4]));
-      this.sips.add(new Sips("super_sorsi", [3, 4]));
+      this.sips.push(new Sips("micro_sorsi", [1, 2]));
+      this.sips.push(new Sips("sorsi", [2, 3, 4]));
+      this.sips.push(new Sips("super_sorsi", [3, 4]));
     } else if (livello == 2) {
-      this.sips.add(new Sips("micro_sorsi", [1, 2]));
-      this.sips.add(new Sips("sorsi", [2, 3, 4]));
-      this.sips.add(new Sips("super_sorsi", [5, 6, 7]));
+      this.sips.push(new Sips("micro_sorsi", [1, 2]));
+      this.sips.push(new Sips("sorsi", [2, 3, 4]));
+      this.sips.push(new Sips("super_sorsi", [5, 6, 7]));
     } else if (livello == 3) {
-      this.sips.add(new Sips("micro_sorsi", [2, 3]));
-      this.sips.add(new Sips("sorsi", [3, 4]));
-      this.sips.add(new Sips("super_sorsi", [5, 6, 7]));
+      this.sips.push(new Sips("micro_sorsi", [2, 3]));
+      this.sips.push(new Sips("sorsi", [3, 4]));
+      this.sips.push(new Sips("super_sorsi", [5, 6, 7]));
     }
     this.TEST > 2 ? console.log("lista sorsi: ", this.sips) : null;
   }
@@ -126,7 +181,7 @@ export class TheGameComponent implements OnInit {
       this.TEST > 1 ? console.log("lista qualità da sostituire: ", qualita) : null;
       if (qualita.length === 0)
         return "";
-      if (this.qualitaUsate.get(tipo).size > 0) { // devo filtrare la lista con i doppioni già usati
+      if (this.qualitaUsate.has(tipo) && this.qualitaUsate.get(tipo).size > 0) { // devo filtrare la lista con i doppioni già usati
         qualitaPescabii = qualita[0].listQ.filter(q => !this.qualitaUsate.get(tipo).has(q));
         this.TEST > 2 ? console.log("lista qualità da sostituire dopo filtraggio: ", qualitaPescabii) : null;
       } else {
@@ -138,7 +193,7 @@ export class TheGameComponent implements OnInit {
   }
 
   configureSips(tipo: String): string {
-    let type = Array.from(this.sips).filter(p => p.tipo == tipo);
+    let type = this.sips.filter(p => p.tipo == tipo);
     let sorsiPossibili = type[0].listaSorsi;
     return String(sorsiPossibili[randomizer(sorsiPossibili.length)]);
   }
@@ -172,7 +227,8 @@ export class TheGameComponent implements OnInit {
           frase = frase.replace(sub, String(change));
           if (change === "1")
             frase = frase.replace("sorsi", "sorso");
-        } else {                                      //una qualunque altra sostituzione
+        } else {                                   //una qualunque altra sostituzione
+          subb = raffinaCategoria(subb);
           if (!(this.qualitaUsate.has(subb) || this.qualitaNonDoppie.includes(subb))) { //verifico se la qualità è mai stata usata e non è tra quelle da lasciar correre
             this.TEST > 2 ? console.log("qualità mai usata") : null;
             this.qualitaUsate.set(subb, new Set<String>());
@@ -272,7 +328,7 @@ export class TheGameComponent implements OnInit {
         this.chooseFrase(true);
       } else {
         this.chooseFrase()
-        this.db.storeQualitaDoppie(this.qualitaUsate)
+        //this.db.storeQualitaDoppie(this.qualitaUsate)
       }
       this.turnoCorrente += 1;
     } else if (this.turnoCorrente === this.turni) {
@@ -327,20 +383,6 @@ export class TheGameComponent implements OnInit {
     await modal.present();
   }
 
-  // backButtonEvent() {
-  //   this.platform.backButton.subscribeWithPriority(15, async () => {
-  //     console.log(this.qualitaUsate)
-  //     this.db.storeQualitaDoppie(this.qualitaUsate)
-  //     let navigationExtras: NavigationExtras = {
-  //       queryParams: {
-  //         giocatori: Array.from(this.listaGiocatori),
-  //       }
-  //     }
-  //     this.turnoCorrente = 0;
-  //     this.navCtrl.navigateForward(['config'], navigationExtras);
-  //   })
-  // }
-
   setNumeroTurni(numeroGiocatori: number, difficolta: number): number {
     if (difficolta == 1)
       return numeroGiocatori * 5;
@@ -360,3 +402,10 @@ export class TheGameComponent implements OnInit {
     await modal.present();
   }
 }
+
+
+function raffinaCategoria(subb: string): string {
+  let res: string = subb.replace(/[0-9]/g, "");
+  return res;
+}
+

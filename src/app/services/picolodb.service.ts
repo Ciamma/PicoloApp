@@ -147,15 +147,16 @@ export class PicolodbService {
   async checkUpdate() {
     let data = await this.storage.getString("dataUpdate");
     console.log(Date.parse(data.value), Date.parse(await this.getLastUpdateData()), Date.parse(data.value) < Date.parse(await this.getLastUpdateData()))
-    return data.value === null || data.value === 'null' || Date.parse(data.value) < Date.parse(await this.getLastUpdateData());
+    return data.value === null || data.value === undefined || data.value === 'null' || data.value === 'undefined' || Date.parse(data.value) < Date.parse(await this.getLastUpdateData());
   }
 
   async upgradeDB() {
+    let data = await this.getLastUpdateData();
     await this.getOnline("frasi");
     await this.getOnline("virus");
     await this.getOnline("qualita");
-    this.storage.setItem("dataUpdate", await this.getLastUpdateData());
-    this.toastCreate("Aggiornamento Completato");
+    this.storage.setItem("dataUpdate", data);
+    this.toastCreate("Aggiornamento Completato", "success");
   }
 
   async getLastUpdateData() {

@@ -26,10 +26,10 @@ export class SettingsGameComponent implements OnInit {
     this.formUtente = this.form.group({
       'giocatore': ["", [Validators.required, Validators.maxLength(15)]],
     });
-    this.TEST ? this.listaGiocatori = ["Ricky", "Gigi"] : this.listaGiocatori = [];;
-    this.difficolta = 1;
-    this.turni = 10;
-    this.TEST ? this.drodraghi = true : this.drodraghi = false;
+    this.listaGiocatori = this.TEST ? ["Ricky", "Gigi", "Liuk"] : [];
+    this.difficolta = this.TEST ? 2 : 1;
+    this.drodraghi = this.TEST ? true : false;
+    this.setNumeroTurni();
     //console.log(this.drodraghi);
     this.platform.backButton.subscribeWithPriority(9999, () => {
       this.listaGiocatori = [];
@@ -51,7 +51,6 @@ export class SettingsGameComponent implements OnInit {
   }
 
   async ionViewWillLeave() {
-    this.platform.backButton.complete();
   }
 
   goToPage() {
@@ -77,7 +76,7 @@ export class SettingsGameComponent implements OnInit {
 
   modalitaDrodraga() {
     this.drodraghi = this.drodraghi ? true : false;
-    this.difficolta = 2;
+    // this.difficolta = 2;
     //console.log("drodraghi: ", this.drodraghi);
   }
 
@@ -99,7 +98,7 @@ export class SettingsGameComponent implements OnInit {
 
   setNumeroTurni() {
     if (this.drodraghi)
-      this.turni = 3000;
+      this.turni = 5000;
     else {
       switch (this.difficolta) {
         case 1:

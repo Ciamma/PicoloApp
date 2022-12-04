@@ -1,7 +1,12 @@
 <ion-content fullscreen [class]='changeBackground()' (click)="newTurn()">
-  <div *ngIf="turni >=3000">
-    <ion-text class="numeroturni">{{turnoCorrente}}</ion-text>
-  </div>
+  <ion-row>
+    <ion-col class="ion-text-start">
+      <ion-button class="buttons" size="default" (click)="onBackButtonClicked()">End game</ion-button>
+    </ion-col>
+    <ion-col class="ion-text-end">
+      <ion-text class="numeroturni" *ngIf="turni >=3000">{{turnoCorrente}}</ion-text>
+    </ion-col>
+  </ion-row>
   <div class="ion-text-center-frase">
     <ion-text justify-content-center>{{frase}}</ion-text>
   </div>

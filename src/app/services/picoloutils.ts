@@ -1,33 +1,9 @@
-import { Frase } from "./picolomodels";
-
 export function randomizer(length: number): number {
     return Math.floor(Math.random() * length);
 }
 
 export function randomizerBetween(min: number, max: number): number {
     return Math.floor(Math.random() * (max - min + 1)) + min;
-}
-
-export function frasiFiltrateNumeroGiocatori(lista: Set<Frase>) {
-    return Array.from(lista).filter(p => !p.tag.includes("3Players"));
-}
-
-export function isEmpty(structure: any[]): boolean {
-    return structure.length === 0;
-}
-
-export function intersecate(listaPartenza: Set<any>, listaDoppioni: Set<any>): Set<any> {
-    return new Set(Array.from(listaPartenza).filter(x => !listaDoppioni.has(x)));
-}
-
-export function union(listaPartenza: Set<any>, listaDoppioni: Set<any>): Set<any> {
-    listaDoppioni.forEach(x => listaPartenza.add(x));
-    return listaPartenza;
-}
-
-export function checkSets(listaPartenza: Set<any>, listaDoppioni: Set<any>) {
-    if (listaPartenza.size === listaDoppioni.size)
-        listaDoppioni.clear();
 }
 
 export function randomTurno(turnoCorrente: number, turni: number): number {
@@ -37,5 +13,10 @@ export function randomTurno(turnoCorrente: number, turni: number): number {
         return randomizerBetween(turnoCorrente + 1, turni);
     } else
         return randomizerBetween(turnoCorrente + 5, turnoCorrente + 12);
+}
+
+export function raffinaCategoria(subb: string): string {
+    let res: string = subb.replace(/[0-9]/g, "");
+    return res;
 }
 

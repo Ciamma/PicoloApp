@@ -108,11 +108,14 @@ export class PicolodbService {
   async getQualitaDoppie() {
     var res: Map<String, Set<String>> = new Map<String, Set<String>>();
     let data = await this.storage.getItemJson("qualitaDoppie");
-    for (let key of Object.keys(data)) {
-      res.set(key, new Set(data[key]));
-    }
-    //console.log('doppi: ', res)
-    return res;
+    if (data !== null) {
+      for (let key of Object.keys(data)) {
+        res.set(key, new Set(data[key]));
+      }
+      //console.log('doppi: ', res)
+      return res;
+    } else
+      return data;
   }
 
   async checkStorage() {
@@ -147,7 +150,7 @@ export class PicolodbService {
   async checkUpdate() {
     let data = await this.storage.getString("dataUpdate");
     console.log(Date.parse(data.value), Date.parse(await this.getLastUpdateData()), Date.parse(data.value) < Date.parse(await this.getLastUpdateData()))
-    return data.value === null || data.value === undefined || data.value === 'null' || data.value === 'undefined' || Date.parse(data.value) < Date.parse(await this.getLastUpdateData());
+    return data.value == null || data.value === 'null' || data.value === 'undefined' || Date.parse(data.value) < Date.parse(await this.getLastUpdateData());
   }
 
   async upgradeDB() {
@@ -160,7 +163,7 @@ export class PicolodbService {
   }
 
   async getLastUpdateData() {
-    let url: string = "https://picoloservice.herokuapp.com/";
+    let url: string = "https://picoloserver.netlify.app/";
     return Http.request({
       method: "GET",
       url: url
@@ -170,7 +173,7 @@ export class PicolodbService {
   }
 
   async getOnline(substring: string) {
-    let url: string = "https://picoloservice.herokuapp.com/ppp".replace('ppp', substring);
+    let url: string = "https://picoloserver.netlify.app/ppp".replace('ppp', substring);
     await Http.request({
       method: "GET",
       url: url

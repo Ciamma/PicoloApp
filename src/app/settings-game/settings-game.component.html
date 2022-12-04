@@ -50,7 +50,6 @@
 
     <ion-card-content>
       <ion-range min="1" max="3" step="1" value="1" [(ngModel)]="difficolta" pin snaps color="primary"
-        [disabled]="drodraghi === true"
         (ionKnobMoveEnd)="aggiornaDifficolta($event)">
         <ion-icon slot="start" size="medium" color="warning" name="beer"></ion-icon>
         <ion-icon slot="end" size="large" color="warning" name="beer"></ion-icon>
@@ -60,7 +59,7 @@
           <ion-checkbox color="primary" slot="start" [(ngModel)]="drodraghi" (click)="modalitaDrodraga()">
           </ion-checkbox>
           <ion-label>Mod. Drodraga</ion-label>
-          <ion-label class="warning-modalita" *ngIf="this.drodraghi">liv. 2, infinito</ion-label>
+          <ion-label class="warning-modalita" *ngIf="this.drodraghi">Turni infiniti</ion-label>
         </ion-item>
       </ion-list>
     </ion-card-content>

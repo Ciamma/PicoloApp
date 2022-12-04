@@ -19,7 +19,6 @@ export class HomePage implements OnInit {
   prova: Set<Frase>;
   constructor(private modalCtrl: ModalController, private db: PicolodbService, private router: Router) {
     this.statusDB = 'Caricamento...';
-    this.buttonDisabled = true;
   }
   ngOnInit() {
     //this.upgradeDB();
@@ -49,12 +48,11 @@ export class HomePage implements OnInit {
   }
 
   async checkUpdate() {
-    this.updateAvailable = this.buttonDisabled = await this.db.checkStorage();  //per vedere se è il primo aggiornamento o i dati sono inconsistenti
+    this.updateAvailable = await this.db.checkStorage();  //per vedere se è il primo aggiornamento o i dati sono inconsistenti
     if (this.updateAvailable) {
       this.statusDB = "Aggiornamento necessario. Caricamento..."
       this.updateAvailable = false;
       await this.db.upgradeDB();
-      this.buttonDisabled = false;
       this.statusDB = "Aggiornamento completato"
     }
     else {
@@ -69,7 +67,9 @@ export class HomePage implements OnInit {
   }
 
   async updateDB() {
+    this.buttonDisabled = true;
     await this.db.upgradeDB();
+    this.buttonDisabled = false;
     this.updateAvailable = false;
     this.statusDB = "Aggiornamento completato"
   }

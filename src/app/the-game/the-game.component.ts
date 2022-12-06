@@ -297,21 +297,4 @@ export class TheGameComponent implements OnInit {
     });
     await modal.present();
   }
-  step(): void {   // finire da implementare
-    var sottoTurni = 0;
-    this.tipoFrase = "sfida";
-    while (sottoTurni < this.listaGiocatori.numeroGiocatori() + 2) {
-      switch (true) {
-        case sottoTurni === 0:
-          this.frase = "Una domanda a ciascun giocatore, partendo da {giocatore} verso {direzione}. dovrà rispondere in 5 secondi. Per chi sbaglia uno shot";
-          break;
-        case sottoTurni > 0 && sottoTurni < this.listaGiocatori.numeroGiocatori() + 1:
-          this.frase = "3 {domanda_step}";
-          break;
-        case sottoTurni === this.listaGiocatori.numeroGiocatori() + 2:
-          this.frase = "";
-          break;
-      }
-    }
-  }
 }

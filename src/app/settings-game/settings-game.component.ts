@@ -40,7 +40,7 @@ export class SettingsGameComponent implements OnInit {
   async ionViewWillEnter() {
     if (this.route.snapshot.queryParams["giocatori"]) {
       this.route.queryParams.subscribe(params => {
-        //console.log('params settings: ', params);
+        console.log('params settings: ', params["giocatori"]);
         this.listaGiocatori = [...params["giocatori"]];
       });
     }

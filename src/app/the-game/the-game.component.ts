@@ -5,7 +5,7 @@ import { ModalPlayersComponent } from '../modal-players/modal-players.component'
 import { ModalTimerComponent } from '../modal-timer/modal-timer.component';
 import { ModalVirusComponent } from '../modal-virus/modal-virus.component';
 import { PicolodbService } from '../services/picolodb.service';
-import { Frase, Sips, Virus, Listone, ListaQualita } from '../services/picolomodels';
+import { Frase, Sips, Virus, Listone, ListaQualita, ListaGiocatori } from '../services/picolomodels';
 import { raffinaCategoria, randomizer, randomTurno } from '../services/picoloutils';
 
 @Component({
@@ -18,7 +18,7 @@ export class TheGameComponent implements OnInit {
   frasi: Listone;  // vedi classe listone
   virus: Listone;
   qualita: ListaQualita; // vedi classe ListaQualita
-  listaGiocatori: Set<string>;  // lista dei giocatori che partecipano
+  listaGiocatori: ListaGiocatori;  // lista dei giocatori che partecipano
   maledizioniConcluse: String[];  // permette di visualizzare le maledizioni concluse(array di appoggio)
   tipoFrase: String;  //il tipo della frase
   frase: String;  // frase che viene stampata
@@ -37,7 +37,7 @@ export class TheGameComponent implements OnInit {
     private route: ActivatedRoute, private db: PicolodbService) {
     this.route.queryParams.subscribe(params => {
       // console.log('params theGame: ', params);
-      this.listaGiocatori = new Set(params["giocatori"]);
+      this.listaGiocatori = new ListaGiocatori(new Set(params["giocatori"]));
       this.turni = JSON.parse(params["turni"]);
       this.difficolta = params["liv"];
     });
@@ -53,6 +53,7 @@ export class TheGameComponent implements OnInit {
   ngOnInit() {
     this.maledizioniConcluse = [];
     this.setSips(this.difficolta);
+    this.frase = "";
     this.turnoCorrente = 0;
     this.newTurn();
   }
@@ -81,31 +82,29 @@ export class TheGameComponent implements OnInit {
       this.qualita.setQualita(await this.db.getQualitaFromAsset());
     }
     this.qualita.setQualitaUsate(await this.db.getQualitaDoppie());
-    if (this.listaGiocatori.size < 3) {
+    if (this.listaGiocatori.numeroGiocatori() < 3) {
       this.frasi.noMoreThanTwoPlayers();
       this.virus.noMoreThanTwoPlayers();
     }
     this.TEST > 2 ? console.log("Da JSON - lista frasi: ", this.frasi.lista, ", lista virus: ", this.virus.lista, ", lista qualità: ", this.qualita.qualita) : null;
   }
-
   onBackButtonClicked(): void {
     this.db.storeQualitaDoppie(this.qualita.qualitaUsate);
+    var arrayGiocatori = Array.from(this.listaGiocatori.listaGiocatori);
     let navigationExtras: NavigationExtras = {
       queryParams: {
-        giocatori: Array.from(this.listaGiocatori),
+        giocatori: arrayGiocatori,
       }
     }
     this.turnoCorrente = 0;
     this.navCtrl.navigateForward(['config'], navigationExtras);
   }
-
   ionViewWillLeave() {
     this.sips = [];
     this.turnoCorrente = 0;
     this.TurnoInizialeFinale("inizio");
     this.virus.listaVirusInCorso.clear();
   }
-
   setSips(livello: number) {
     this.sips.length = 0;
     if (livello == 1) {
@@ -127,15 +126,13 @@ export class TheGameComponent implements OnInit {
   findWord(tipo: string, doppioni?: Set<String>): String {
     switch (true) {
       case tipo.includes("giocatore"):
-        let listaPlayerPescabile = Array.from(this.listaGiocatori).filter(p => !doppioni.has(p));
-        return listaPlayerPescabile[randomizer(listaPlayerPescabile.length)];
+        return this.listaGiocatori.getRandomPlayer();
       default: // qualità
         let res = this.qualita.getRandomicElement(tipo);
         this.TEST > 1 ? console.log("qualità scelta: ", res) : null;
         return res !== "undefined" ? res : "";
     }
   }
-
   substitute(frase: String, frase_f?: String): String {
     this.TEST > 0 ? console.log("frase senza sostituzioni: ", frase) : null;
     let giocatoriScelti = new Set<String>();
@@ -152,8 +149,7 @@ export class TheGameComponent implements OnInit {
           case subb.includes("giocatore"):
             change = this.findWord(subb, giocatoriScelti);
             this.TEST > 1 ? console.log("giocatore scelto: ", change) : null;
-            giocatoriScelti.size === this.listaGiocatori.size ? giocatoriScelti.clear() : null;
-            giocatoriScelti.add(change);
+            this.listaGiocatori.addGiocatoreFrase(change);
             break;
           case subb.includes("sors"):
             change = String(this.sips.find(p => p.tipo === subb).getRandomSip());
@@ -173,16 +169,15 @@ export class TheGameComponent implements OnInit {
       if (cont === null) break;
     }
     frase_f !== undefined ? this.setVirus(frase, frase_f) : null;
+    this.listaGiocatori.resetListaDoppi();
     return frase;
   }
-
   setVirus(frase: String, frase_f: String) {
     let turniVirus = randomTurno(this.turnoCorrente, this.turni);
     let v: Virus = new Virus(frase, frase_f);
     this.virus.setVirusInCorso(turniVirus, v);
     this.TEST > 2 ? console.log("lista virus aggiornata: ", this.virus.listaVirusInCorso) : null;
   }
-
   chooseFrase(virus?: boolean) {
     this.TEST > 0 ? console.log("listaVirus: ", this.virus.listaVirusInCorso) : null;
     if (virus) {
@@ -198,7 +193,6 @@ export class TheGameComponent implements OnInit {
       this.tipoFrase = f.getTipoFrase();
     }
   }
-
   changeBackground() {
     if (this.tipoFrase.includes("random") || this.tipoFrase.includes("game"))
       return "simple";
@@ -209,7 +203,6 @@ export class TheGameComponent implements OnInit {
     else
       return "benvenuto";
   }
-
   TurnoInizialeFinale(tipo: String) {
     switch (tipo) {
       case "inizio":
@@ -221,12 +214,12 @@ export class TheGameComponent implements OnInit {
     }
     this.tipoFrase = "benvenuto";
   }
-
   newTurn() {
     this.TEST > 0 ? console.log("--------------------------------------------------") : null;
     this.TEST > 0 ? console.log('turno corrente: ' + this.turnoCorrente) : null;
     this.maledizioniConcluse = this.virus.getVirusFiniti(this.turnoCorrente);
     this.TEST > 0 ? console.log("virus conclusi in questo turno: ", this.maledizioniConcluse) : null;
+    this.frase.includes("Benvenuti") ? this.turnoCorrente = 1 : null; 
     switch (true) {
       case this.turnoCorrente === 0:
         this.turnoCorrente += 1;
@@ -245,25 +238,25 @@ export class TheGameComponent implements OnInit {
       case this.turnoCorrente > this.turni:
         this.TEST > 2 ? console.log("torno alle impostazioni") : null;
         this.db.storeQualitaDoppie(this.qualita.qualitaUsate);
+        var arrayGiocatori = Array.from(this.listaGiocatori.listaGiocatori);
+        // console.log("giocatori che passo alla modale: ", this.listaGiocatori.listaGiocatori);
         let navigationExtras: NavigationExtras = {
           queryParams: {
-            giocatori: Array.from(this.listaGiocatori),
+            giocatori: arrayGiocatori,
           }
         }
         this.navCtrl.navigateForward(['config'], navigationExtras);
         break;
     }
     this.changeBackground();
-
   }
-
   async modal(mod: String) {
     let virusDaMostrare = this.virus.getVirusInCorso();
     this.TEST > 2 ? console.log("virus modale: ", virusDaMostrare) : null;
     const modal = await this.modalCtrl.create({
       component: (mod === "virus" ? ModalVirusComponent : ModalPlayersComponent),
       componentProps: {
-        listaGiocatori: (mod === "virus" ? undefined : this.listaGiocatori),
+        listaGiocatori: (mod === "virus" ? undefined : new Set(this.listaGiocatori.listaGiocatori)),
         turni: (mod === "virus" ? undefined : this.turni),
         virusDaMostrare: (mod === "virus" ? virusDaMostrare : undefined),
       },
@@ -274,10 +267,10 @@ export class TheGameComponent implements OnInit {
     else {
       modal.onDidDismiss()
         .then((data) => {
-          this.listaGiocatori = data['data'];
+          this.listaGiocatori.setListaGiocatori(data['data']);
           if (this.turni !== 3000) {
-            this.turni = this.setNumeroTurni(this.listaGiocatori.size, this.difficolta);
-            this.TEST > 2 ? console.log("turni aggiornati: ", this.turni, ", lista giocatori: ", this.listaGiocatori.size, 'difficolta: ', this.difficolta) : null;
+            this.turni = this.setNumeroTurni(this.listaGiocatori.numeroGiocatori(), this.difficolta);
+            this.TEST > 2 ? console.log("turni aggiornati: ", this.turni, ", lista giocatori: ", this.listaGiocatori.numeroGiocatori(), 'difficolta: ', this.difficolta) : null;
           }
         });
     }
@@ -291,7 +284,6 @@ export class TheGameComponent implements OnInit {
     else if (difficolta == 3)
       return numeroGiocatori * 10;
   }
-
   async timer() {
     const modal = await this.modalCtrl.create({
       component: ModalTimerComponent,
@@ -301,19 +293,18 @@ export class TheGameComponent implements OnInit {
     });
     await modal.present();
   }
-
   step(): void {   // finire da implementare
     var sottoTurni = 0;
     this.tipoFrase = "sfida";
-    while (sottoTurni < this.listaGiocatori.size + 2) {
+    while (sottoTurni < this.listaGiocatori.numeroGiocatori() + 2) {
       switch (true) {
         case sottoTurni === 0:
           this.frase = "Una domanda a ciascun giocatore, partendo da {giocatore} verso {direzione}. dovrà rispondere in 5 secondi. Per chi sbaglia uno shot";
           break;
-        case sottoTurni > 0 && sottoTurni < this.listaGiocatori.size + 1:
+        case sottoTurni > 0 && sottoTurni < this.listaGiocatori.numeroGiocatori() + 1:
           this.frase = "3 {domanda_step}";
           break;
-        case sottoTurni === this.listaGiocatori.size + 2:
+        case sottoTurni === this.listaGiocatori.numeroGiocatori() + 2:
           this.frase = "";
           break;
       }

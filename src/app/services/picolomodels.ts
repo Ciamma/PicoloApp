@@ -32,7 +32,6 @@ export class Virus {
 export class Quality {
     nome: String;
     listQ: string[];
-
     constructor(name: String, listQ?: string[]) {
         this.nome = name;
         this.listQ = (listQ ? listQ : []);
@@ -142,37 +141,39 @@ export class Listone { // lista di frasi o di virus
 }
 
 export class ListaGiocatori {
-    listaGiocatori: String[];  // lista dei giocatori che partecipano
+    listaGiocatori: Set<String>;  // lista dei giocatori che partecipano
     listaGiocatoriFrase: String[]; //giocatori scelti per una frase(per non ripetere più volte lo stesso giocatore)
 
-    constructor(players: String[]) {
+    constructor(players: Set<String>) {
         this.listaGiocatori = players;
-        this.listaGiocatoriFrase = []
+        this.listaGiocatoriFrase = [];
     }
-
-    addGiocatore(player: String) {
-        this.listaGiocatori.push(player);
+    setListaGiocatori(playerList: Set<String>) {
+        playerList.forEach(p => {
+            this.listaGiocatori.has(p) ? null : this.addGiocatore(p);
+        });
     }
-
-    removeGiocatore(player: String) {
-        this.listaGiocatori = this.listaGiocatori.includes(player) ? this.listaGiocatori.filter(x => x !== player) : this.listaGiocatori;
+    addGiocatore(player: String): void {
+        console.log(this.listaGiocatori);
+        this.listaGiocatori.add(player);
     }
-
+    removeGiocatore(player: String): void {
+        this.listaGiocatori.has(player) ? this.listaGiocatori.delete(player) : this.listaGiocatori;
+    }
     numeroGiocatori(): number {
-        return this.listaGiocatori.length;
+        return this.listaGiocatori.size;
     }
-
     resetListaDoppi(): void {
         this.listaGiocatoriFrase.length = 0;
     }
-
-    addGiocatoreFrase(player: String) {
+    addGiocatoreFrase(player: String): void {
         this.listaGiocatoriFrase.push(player);
-        this.listaGiocatori.length === this.listaGiocatoriFrase.length ? this.resetListaDoppi() : null;
+        console.log(this.listaGiocatori);
+        this.listaGiocatori.size === this.listaGiocatoriFrase.length ? this.resetListaDoppi() : null;
     }
 
     getRandomPlayer(): String {
-        const giocatoriPescabili = this.listaGiocatori.filter(x => !this.listaGiocatoriFrase.includes(x));
+        const giocatoriPescabili = [...this.listaGiocatori].filter(x => !this.listaGiocatoriFrase.includes(x));
         const giocatore = giocatoriPescabili[Math.floor(Math.random() * giocatoriPescabili.length)];
         this.addGiocatore(giocatore);
         return giocatore;

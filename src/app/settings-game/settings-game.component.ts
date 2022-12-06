@@ -76,8 +76,6 @@ export class SettingsGameComponent implements OnInit {
 
   modalitaDrodraga() {
     this.drodraghi = this.drodraghi ? true : false;
-    // this.difficolta = 2;
-    //console.log("drodraghi: ", this.drodraghi);
   }
 
   addGiocatore() {
@@ -93,7 +91,6 @@ export class SettingsGameComponent implements OnInit {
 
   aggiornaDifficolta(aggiorna) {
     this.difficolta = aggiorna.detail.value;
-    //console.log(this.difficolta);
   }
 
   setNumeroTurni() {

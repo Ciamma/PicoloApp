@@ -91,6 +91,8 @@ export class TheGameComponent implements OnInit {
   onBackButtonClicked(): void {
     this.db.storeQualitaDoppie(this.qualita.qualitaUsate);
     var arrayGiocatori = Array.from(this.listaGiocatori.listaGiocatori);
+    console.log(arrayGiocatori);
+
     let navigationExtras: NavigationExtras = {
       queryParams: {
         giocatori: arrayGiocatori,

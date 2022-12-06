@@ -149,18 +149,18 @@ export class ListaGiocatori {
         this.listaGiocatoriFrase = [];
     }
     setListaGiocatori(playerList: Set<String>) {
-        console.log("aggiorno lista giocatori con questa: ", playerList);
+        // console.log("aggiorno lista giocatori con questa: ", playerList);
         playerList.forEach(p => {
             this.listaGiocatori.has(p) ? null : this.addGiocatore(p);
         });
         this.listaGiocatori.forEach(p => {
             !playerList.has(p) ? this.removeGiocatore(p) : null;
         })
-        console.log("lista che ottengo in output:", this.listaGiocatori);
+        // console.log("lista che ottengo in output:", this.listaGiocatori);
 
     }
     addGiocatore(player: String): void {
-        console.log(this.listaGiocatori);
+        // console.log(this.listaGiocatori);
         this.listaGiocatori.add(player);
     }
     removeGiocatore(player: String): void {
@@ -174,7 +174,7 @@ export class ListaGiocatori {
     }
     addGiocatoreFrase(player: String): void {
         this.listaGiocatoriFrase.push(player);
-        console.log(this.listaGiocatori);
+        // console.log(this.listaGiocatori);
         this.listaGiocatori.size === this.listaGiocatoriFrase.length ? this.resetListaDoppi() : null;
     }
 

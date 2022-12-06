@@ -91,7 +91,7 @@ export class TheGameComponent implements OnInit {
   onBackButtonClicked(): void {
     this.db.storeQualitaDoppie(this.qualita.qualitaUsate);
     var arrayGiocatori = Array.from(this.listaGiocatori.listaGiocatori);
-    console.log(arrayGiocatori);
+    //console.log(arrayGiocatori);
 
     let navigationExtras: NavigationExtras = {
       queryParams: {
@@ -270,8 +270,10 @@ export class TheGameComponent implements OnInit {
       modal.onDidDismiss()
         .then((data) => {
           this.listaGiocatori.setListaGiocatori(data['data']);
-          if (this.turni !== 3000) {
-            this.turni = this.setNumeroTurni(this.listaGiocatori.numeroGiocatori(), this.difficolta);
+          if (this.turni !== 3000 && this.turnoCorrente < this.turni) {
+            const turniAggiornati = this.setNumeroTurni(this.listaGiocatori.numeroGiocatori(), this.difficolta);
+            //console.log("turni aggiornati: ", turniAggiornati, ", turno corrente: ", this.turnoCorrente);
+            this.turni = turniAggiornati > this.turnoCorrente ? turniAggiornati : this.turni;
             this.TEST > 2 ? console.log("turni aggiornati: ", this.turni, ", lista giocatori: ", this.listaGiocatori.numeroGiocatori(), 'difficolta: ', this.difficolta) : null;
           }
         });
